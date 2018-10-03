@@ -6,7 +6,7 @@ var querystring = require('querystring');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
-    host : "aava0zdogrqn64.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com", port: 3306,  user:"root", password:"1234", database:"dito_db"
+    host : "aava0zdogrqn64.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com", port: 3306,  user:"masterjh", password:"yappdito", database:"dito_db"
 });
 
 function makeid()
