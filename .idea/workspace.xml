@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0909de88-3a31-48ac-8b63-8aae1bff3876" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yapp-dito/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../yapp-dito/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yapp-dito/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../yapp-dito/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yapp-dito/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../yapp-dito/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../yapp-dito/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../yapp-dito/routes/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../yapp-dito/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,11 +33,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="152">
+              <caret line="8" column="84" lean-forward="true" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -41,8 +45,17 @@
       <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            <state relative-caret-position="171">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -50,24 +63,23 @@
       <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/.elasticbeanstalk/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+            <state relative-caret-position="95">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nodecommand.config" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nodecommand.config" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/.ebextensions/nodecommand.config">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="layout.pug" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.pug">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -80,6 +92,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../yapp-dito" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../yapp-dito/.ebextensions/nodecommand.config" />
+        <option value="$PROJECT_DIR$/../yapp-dito/app.js" />
+        <option value="$PROJECT_DIR$/../yapp-dito/routes/index.js" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
@@ -98,8 +119,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="832" />
-    <option name="y" value="72" />
+    <option name="x" value="1008" />
+    <option name="y" value="420" />
     <option name="width" value="977" />
     <option name="height" value="808" />
   </component>
@@ -133,6 +154,11 @@
               <item name="yapp-dito" type="b2602c69:ProjectViewProjectNode" />
               <item name="yapp-dito" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yapp-dito" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yapp-dito" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -213,12 +239,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538563745486</updated>
-      <workItem from="1538563765950" duration="4599000" />
+      <workItem from="1538563765950" duration="5777000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4599000" />
+    <option name="totallyTimeSpent" value="5777000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -230,11 +256,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="958" y="39" width="781" height="646" extended-state="0" />
+    <frame x="866" y="40" width="781" height="646" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.3288201" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -242,12 +269,12 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="3" weight="0.3288201" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32770744" />
       <window_info id="npm" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.45579568" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="1" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.5034674" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.5034674" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
@@ -305,32 +332,43 @@
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.pug">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/.elasticbeanstalk/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/.ebextensions/nodecommand.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.jade">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="180">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="171">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/.elasticbeanstalk/config.yml">
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        <state relative-caret-position="152">
+          <caret line="8" column="84" lean-forward="true" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="84" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/.ebextensions/nodecommand.config">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
