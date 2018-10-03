@@ -45,7 +45,7 @@ router.get('/login', function (req,res) {
 });
 
 router.get('/join', function (req,res) {
-    client.query("INSERT INTO user values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result, fields) {
+    client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result, fields) {
         if (err) {
             res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
