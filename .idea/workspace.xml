@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0909de88-3a31-48ac-8b63-8aae1bff3876" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../yapp-dito/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../yapp-dito/routes/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../yapp-dito/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+            <state relative-caret-position="619">
+              <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -124,8 +123,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="962" />
-    <option name="y" value="181" />
+    <option name="x" value="972" />
+    <option name="y" value="267" />
     <option name="width" value="977" />
     <option name="height" value="808" />
   </component>
@@ -248,12 +247,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538563745486</updated>
-      <workItem from="1538563765950" duration="12876000" />
+      <workItem from="1538563765950" duration="13403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12876000" />
+    <option name="totallyTimeSpent" value="13403000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -265,7 +264,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <frame x="778" y="214" width="781" height="646" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
@@ -280,10 +279,10 @@
       <window_info anchor="bottom" id="Run" order="6" weight="0.32911393" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32630098" />
       <window_info id="npm" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32630098" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.45579568" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="1" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.087919466" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.1816921" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="5" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
@@ -374,8 +373,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        <state relative-caret-position="619">
+          <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
         </state>
       </provider>
     </entry>
