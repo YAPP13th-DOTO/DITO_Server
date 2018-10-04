@@ -4,7 +4,6 @@ var url = require('url');
 var querystring = require('querystring');
 
 var mysql = require("mysql");
-var connection = require("mysql");
 
 var client = mysql.createConnection({
     host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:process.env.RDS_DB_NAME
@@ -29,7 +28,15 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', function (req,res) {
 
+    client.connect(function(err) {
+        if (err) {
+            res.send('connect error');
+            console.error('Database connection failed: ' + err.stack);
+            return;
+        }
 
+        console.log('Connected to database.');
+    });
     client.query("SELECT * FROM User where kakao_code='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
             res.send(process.env.RDS_HOSTNAME);
