@@ -6,7 +6,7 @@ var querystring = require('querystring');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
-    host : "aava0zdogrqn64.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com", port: 3306,  user:"masterjh", password:"yappdito", database:"dito_db"
+    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:process.env.RDS_DB_NAME
 });
 
 function makeid()
@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', function (req,res) {
 
-    client.query("SELECT * FROM user where kakao_code='" + req.query.id+"';", function (err, result, fields) {
+    client.query("SELECT * FROM User where kakao_code='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
             console.log("쿼리문에 오류가 있습니다.");
         }
