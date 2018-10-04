@@ -28,6 +28,15 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', function (req,res) {
 
+    connection.connect(function(err) {
+        if (err) {
+            console.error('Database connection failed: ' + err.stack);
+            return;
+        }
+
+        console.log('Connected to database.');
+    });
+
     client.query("SELECT * FROM User where kakao_code='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
             console.log("쿼리문에 오류가 있습니다.");
@@ -47,7 +56,7 @@ router.get('/login', function (req,res) {
 router.get('/join', function (req,res) {
     client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            res.send('INSERT INTO user values(\'" + req.query.id+"\' , \'"+ req.query.name +"\');');
             console.log("쿼리문에 오류가 있습니다.");
             console.log("INSERT INTO user values('" + req.query.id+"' , '"+ req.query.name +"');");
         }
