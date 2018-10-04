@@ -29,17 +29,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/login', function (req,res) {
 
-    connection.createConnection(function(err) {
-        if (err) {
-            console.error('Database connection failed: ' + process.env.RDS_HOSTNAME+ err.stack);
-            return;
-        }
-
-        console.log('Connected to database.');
-    });
 
     client.query("SELECT * FROM User where kakao_code='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
+            res.send(process.env.RDS_HOSTNAME);
             console.log("쿼리문에 오류가 있습니다.");
         }
         else {
