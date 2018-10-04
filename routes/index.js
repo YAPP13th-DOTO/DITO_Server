@@ -30,7 +30,7 @@ router.get('/login', function (req,res) {
 
     connection.connect(function(err) {
         if (err) {
-            console.error('Database connection failed: ' + err.stack);
+            console.error('Database connection failed: ' + process.env.RDS_HOSTNAME+ err.stack);
             return;
         }
 
