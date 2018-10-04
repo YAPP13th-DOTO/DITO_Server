@@ -23,11 +23,6 @@ function makeid()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-});
-
-router.get('/login', function (req,res) {
-
     client.connect(function(err) {
         if (err) {
             res.send('connect error');
@@ -35,8 +30,13 @@ router.get('/login', function (req,res) {
             return;
         }
 
-        console.log('Connected to database.');
+        res.send('Connected to database.');
     });
+});
+
+router.get('/login', function (req,res) {
+
+
     client.query("SELECT * FROM User where kakao_code='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
             res.send(process.env.RDS_HOSTNAME);
