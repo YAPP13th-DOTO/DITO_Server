@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 
     client.query("show tables;", function (err, result) {
         if(err){
-            res.send("is not connect");
+            res.send(err.stack);
         }
         else{
             res.json(result);
