@@ -73,8 +73,8 @@ router.get('/create', function (req,res) {
     //console.log(req.session.user_id);
     var random = makeid();
     var a = req.session.user_id;
-    client.query("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());" +
-        "INSERT INTO UsersTeam('"+a+"','"+random+"','"+1+"')", function (err, result, fields) {
+    client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());" +
+        "INSERT INTO UsersTeam values('"+a+"','"+random+"','"+1+"');", function (err, result, fields) {
         if (err) {
             res.send('false');
             console.log("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());");
@@ -82,12 +82,27 @@ router.get('/create', function (req,res) {
             console.log("쿼리문에 오류가 있습니다.");
         }
         else {
-            res.json(result);
-            res.send('access');
+            res.send(random);
         }
     });
     //return code
     //방장 정보 추가해주는 함수
+});
+
+router.get('/attend', function (req,res) {
+
+    client.query("INSERT INTO UsersTeam values('"+a+"','"+random+"','"+0+"');", function (err, result,fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        }
+        else {
+            res.json(result);
+            res.send('access');
+        }
+    })
+
+
 });
 
 //과제 만들기
@@ -107,7 +122,7 @@ router.get('/create/assign', function (req,res) {
 //team list -> 메인페이지 team room 에 유저정보가 없음.
 router.get('/get', function (req,res) {
     console.log(req.session.count);
-    client.query("SELECT * FROM UsersTeam where kakao_id='" + req.query.id+ "';", function (err, result, fields) {
+    client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.query.id+ "';", function (err, result, fields) {
         if (err) {
             res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
