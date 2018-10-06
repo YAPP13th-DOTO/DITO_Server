@@ -38,11 +38,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function (req,res) {
-
-
-    client.query("SELECT * FROM User where kakao_code='" + req.query.id+"';", function (err, result, fields) {
+    client.query("SELECT * FROM User where kakao_id='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
-            res.send(err.stack);
+            console.log("쿼리문에 오류가 있습니다.");
         }
         else {
             req.session.user_id = req.query.id;
@@ -56,10 +54,13 @@ router.get('/login', function (req,res) {
     });
 });
 
+// 조인 값 들어옴
 router.get('/join', function (req,res) {
     client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result, fields) {
         if (err) {
-            res.send(err.stack);
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+            console.log("INSERT INTO user values('" + req.query.id+"' , '"+ req.query.name +"');");
         }
         else {
             res.send('access');
@@ -69,24 +70,30 @@ router.get('/join', function (req,res) {
 
 //team 만들기
 router.get('/create', function (req,res) {
-
-    console.log(req.session.user_id);
+    //console.log(req.session.user_id);
     var random = makeid();
-    client.query("INSERT INTO teamroom values('" +random +"' , '"+ req.query.name +"','"+ 0+"');", function (err, result, fields) {
+    var a = req.session.user_id;
+    client.query("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());" +
+        "INSERT INTO UsersTeam('"+a+"','"+random+"','"+1+"')", function (err, result, fields) {
         if (err) {
             res.send('false');
+            console.log("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());");
+            console.log("INSERT INTO UsersTeam values('"+a+"','"+random+"', 1)");
             console.log("쿼리문에 오류가 있습니다.");
         }
         else {
+            res.json(result);
             res.send('access');
         }
     });
     //return code
+    //방장 정보 추가해주는 함수
 });
 
 //과제 만들기
 router.get('/create/assign', function (req,res) {
-    client.query("INSERT INTO teamassignment values('" +1 +"' , '"+ 2 +"','"+ 0+"','"+0+"',"+1+");", function (err, result, fields) {
+    //console.log(req.session.tm_code);
+    client.query("INSERT INTO Assignment(tm_code,as_name,as_content,as_dl) values('"+req.query.tmcode+"','"+req.query.asname+"','"+req.query.ascontent+"',' ');", function (err, result, fields) {
         if (err) {
             res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
@@ -97,28 +104,56 @@ router.get('/create/assign', function (req,res) {
     });
 });
 
-//team list
+//team list -> 메인페이지 team room 에 유저정보가 없음.
 router.get('/get', function (req,res) {
     console.log(req.session.count);
-    res.send('get teamlist');
-
+    client.query("SELECT * FROM UsersTeam where kakao_id='" + req.query.id+ "';", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.send('access');
+            res.json(result);
+        }
+    });
 });
 
-//선택한 팀
+//선택한 팀 -> 팀 세부정보
 router.get('/get/team', function (req,res) {
-    res.send('get team');
-
+    client.query("SELECT * FROM Team where tm_code='" + req.query.tm_code+ "';", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.send('access');
+            res.json(result);
+        }
+    });
 });
 
 //과제 목록
 router.get('/get/team/assign', function (req,res) {
-    res.send('get assi');
+    client.query("SELECT * FROM Assignment where tm_code='" + req.query.tm_code+ "';", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.json(result);
 
+        }
+    });
 });
 
-//선택한 과제
+//선택한 과제 - 이거 유저 과제로 찾아야하나?
 router.get('/get/assign', function (req,res) {
-    res.send('select assi');
+    client.query("SELECT * FROM Assignment where assignment_num='" + req.query.as_num+ "';", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.send('access');
+        }
+    });
 });
 
 module.exports = router;
