@@ -6,9 +6,9 @@ var querystring = require('querystring');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
-    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:"ebdb"
-    // host : "aa11q9sjl4yh0a7.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
-    // , port: 3306,  user:"dito", password:"masterjh", database:"ebdb"
+    // host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:"ebdb"
+    host : "aaua1c543fs7sg.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
+    , port: 3306,  user:"masterjh", password:"yappdito", database:"ebdb"
 
 });
 
@@ -135,9 +135,10 @@ router.get('/get', function (req,res) {
     client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.session.user_id+ "';", function (err, result, fields) {
         if (err) {
             res.send('false');
-            console.log("쿼리문에 오류가 있습니다.");
+            console.log(req.session.user_id);
         } else {
-            res.send('access');
+            // console.log(req.session.user_id);
+            // res.send('access');
             res.json(result);
         }
     });

@@ -30,8 +30,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
+            <state relative-caret-position="411">
+              <caret line="142" column="9" lean-forward="true" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -49,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/../yapp-dito/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="247">
-              <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -67,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="179">
-              <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+              <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -123,8 +123,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="615" />
-    <option name="y" value="-9" />
+    <option name="x" value="957" />
+    <option name="y" value="193" />
     <option name="width" value="979" />
     <option name="height" value="810" />
   </component>
@@ -249,12 +249,12 @@
       <updated>1538563745486</updated>
       <workItem from="1538563765950" duration="14882000" />
       <workItem from="1538752089543" duration="3889000" />
-      <workItem from="1538813635787" duration="9011000" />
+      <workItem from="1538813635787" duration="10162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27782000" />
+    <option name="totallyTimeSpent" value="28933000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -274,13 +274,13 @@
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50067115" side_tool="true" visible="true" weight="0.32911393" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50067115" side_tool="true" visible="true" weight="0.23628692" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32630098" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.23628692" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49932885" visible="true" weight="0.23628692" />
       <window_info id="npm" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" sideWeight="0.49932885" visible="true" weight="0.32911393" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49932885" weight="0.32911393" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="1" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.09328859" />
@@ -471,7 +471,7 @@
     <entry file="file://$PROJECT_DIR$/../yapp-dito/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
-          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -485,14 +485,14 @@
     <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
-          <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
+        <state relative-caret-position="411">
+          <caret line="142" column="9" lean-forward="true" selection-start-line="142" selection-start-column="9" selection-end-line="142" selection-end-column="9" />
         </state>
       </provider>
     </entry>
