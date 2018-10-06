@@ -103,7 +103,7 @@ router.get('/attend', function (req,res) {
 
     client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"','"+0+"');", function (err, result,fields) {
         if (err) {
-            res.send('false');
+            res.send(err.stack);
             console.log("쿼리문에 오류가 있습니다.");
         }
         else {
