@@ -30,8 +30,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="88" column="8" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+            <state relative-caret-position="152">
+              <caret line="8" column="164" lean-forward="true" selection-start-line="8" selection-start-column="153" selection-end-line="8" selection-end-column="164" />
             </state>
           </provider>
         </entry>
@@ -121,11 +121,10 @@
       <path value="$PROJECT_DIR$/../yapp-dito/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="630" />
-    <option name="y" value="431" />
-    <option name="width" value="978" />
-    <option name="height" value="809" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -247,12 +246,12 @@
       <option name="presentableId" value="Default" />
       <updated>1538563745486</updated>
       <workItem from="1538563765950" duration="14882000" />
-      <workItem from="1538752089543" duration="720000" />
+      <workItem from="1538752089543" duration="3335000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15602000" />
+    <option name="totallyTimeSpent" value="18217000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -264,7 +263,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32770744" />
@@ -430,8 +430,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="88" column="8" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+        <state relative-caret-position="152">
+          <caret line="8" column="164" lean-forward="true" selection-start-line="8" selection-start-column="153" selection-end-line="8" selection-end-column="164" />
         </state>
       </provider>
     </entry>
