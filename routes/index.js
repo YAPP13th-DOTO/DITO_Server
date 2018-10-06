@@ -76,7 +76,7 @@ router.get('/create', function (req,res) {
     client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());" +
         "INSERT INTO UsersTeam values('"+a+"','"+random+"','"+1+"');", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            res.send(err.stack);
             console.log("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());");
             console.log("INSERT INTO UsersTeam values('"+a+"','"+random+"', 1)");
             console.log("쿼리문에 오류가 있습니다.");
