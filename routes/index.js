@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
             res.send("is not connect");
         }
         else{
-            res.send("connect");
+            res.json(result);
         }
     });
 });
