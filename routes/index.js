@@ -87,7 +87,7 @@ router.get('/create', function (req,res) {
         }
     });
 
-    client.query("INSERT INTO UsersTeam values('"+a+"','"+random+"',1);", function (err, result, fields) {
+    client.query("INSERT INTO UsersTeam values('"+req.query.id+"','"+random+"',1);", function (err, result, fields) {
         if(err){
             res.send('false');
         }
@@ -105,7 +105,7 @@ router.get('/create', function (req,res) {
 //team 참여
 router.get('/attend', function (req,res) {
 
-    client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"',0);", function (err, result,fields) {
+    client.query("INSERT INTO UsersTeam values('"+req.query.id+"','"+req.query.code+"',0);", function (err, result,fields) {
         if (err) {
             res.send('false');
             console.log(err.stack);
@@ -172,11 +172,11 @@ router.post('/create/assign', function (req,res) {
 
 //team list -> 메인페이지 team room 에 유저정보가 없음.
 router.get('/get', function (req,res) {
-    console.log(req.session.count);
-    client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.session.user_id+ "';", function (err, result, fields) {
+    // console.log(req.session.count);
+    client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.request.id+ "';", function (err, result, fields) {
         if (err) {
             res.send('false');
-            console.log(req.session.user_id);
+            // console.log(req.session.user_id);
         } else {
             // console.log(req.session.user_id);
             // res.send('access');
