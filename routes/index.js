@@ -27,7 +27,7 @@ function makeid()
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-    client.query("show tables;", function (err, result) {
+    client.query("show databases;", function (err, result) {
         if(err){
             res.send(err.stack);
         }
