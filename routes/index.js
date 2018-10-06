@@ -27,7 +27,7 @@ function makeid()
 router.get('/', function(req, res, next) {
     client.connect(function(err) {
         if (err) {
-            res.send('connect error');
+            res.send(process.env.RDS_HOSTNAME);
             console.error('Database connection failed: ' + err.stack);
             return;
         }
