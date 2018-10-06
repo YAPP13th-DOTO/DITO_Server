@@ -27,7 +27,7 @@ function makeid()
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-    client.query("show databases;", function (err, result) {
+    client.query("show tables;", function (err, result) {
         if(err){
             res.send("is not connect");
         }
@@ -60,8 +60,7 @@ router.get('/login', function (req,res) {
 router.get('/join', function (req,res) {
     client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result, fields) {
         if (err) {
-            res.send(err.print);
-
+            res.send(err.stack);
         }
         else {
             res.send('access');
