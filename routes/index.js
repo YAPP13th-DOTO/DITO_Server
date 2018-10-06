@@ -6,7 +6,7 @@ var querystring = require('querystring');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
-    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD
+    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:"ebdb"
     // host : "aa11q9sjl4yh0a7.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
     // , port: 3306,  user:"dito", password:"masterjh", database:"ebdb"
 
