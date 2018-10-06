@@ -132,7 +132,7 @@ router.get('/create/assign', function (req,res) {
 //team list -> 메인페이지 team room 에 유저정보가 없음.
 router.get('/get', function (req,res) {
     console.log(req.session.count);
-    client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.query.id+ "';", function (err, result, fields) {
+    client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.session.user_id+ "';", function (err, result, fields) {
         if (err) {
             res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
