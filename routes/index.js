@@ -74,8 +74,7 @@ router.get('/create', function (req,res) {
     //console.log(req.session.user_id);
     var random = makeid();
     var a = req.session.user_id;
-    client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', 0, now());" +
-        "INSERT INTO UsersTeam values('"+a+"','"+random+"',1);", function (err, result, fields) {
+    client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', 0, now());" , function (err, result, fields) {
         if (err) {
             res.send(err.stack);
             console.log("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());");
@@ -83,9 +82,19 @@ router.get('/create', function (req,res) {
             console.log("쿼리문에 오류가 있습니다.");
         }
         else {
-            res.send(random);
+            // res.send(random);
         }
     });
+
+    client.query("INSERT INTO UsersTeam values('"+a+"','"+random+"',1);", function (err, result, fields) {
+        if(err){
+            res.send(err.stack);
+        }
+        else{
+            res.send(random);
+        }
+
+    })
     //return code
     //방장 정보 추가해주는 함수
 });
