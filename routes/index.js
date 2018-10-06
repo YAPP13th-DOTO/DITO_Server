@@ -6,7 +6,7 @@ var querystring = require('querystring');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
-    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:process.env.RDS_DB_NAME
+    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD
     // host : "localhost", port: 3306,  user:"root", password:"1234", database:"dito_db"
 
 });
