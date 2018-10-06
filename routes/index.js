@@ -74,8 +74,8 @@ router.get('/create', function (req,res) {
     //console.log(req.session.user_id);
     var random = makeid();
     var a = req.session.user_id;
-    client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());" +
-        "INSERT INTO UsersTeam values('"+a+"','"+random+"','"+1+"');", function (err, result, fields) {
+    client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', 0, now());" +
+        "INSERT INTO UsersTeam values('"+a+"','"+random+"',1);", function (err, result, fields) {
         if (err) {
             res.send(err.stack);
             console.log("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());");
@@ -136,7 +136,7 @@ router.get('/get', function (req,res) {
 
 //선택한 팀 -> 팀 세부정보
 router.get('/get/team', function (req,res) {
-    client.query("SELECT * FROM Team where tm_code='" + req.query.tm_code+ "';", function (err, result, fields) {
+    client.query("SELECT * FROM Team where tm_code='" + req.query.tmcode+ "';", function (err, result, fields) {
         if (err) {
             res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
