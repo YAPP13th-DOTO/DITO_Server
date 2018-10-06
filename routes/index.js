@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 
     client.query("show databases;", function (err, result) {
         if(err){
-            res.send(err.stack);
+            res.send('false');
         }
         else{
             res.json(result);
@@ -37,6 +37,9 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/test', function(req, res, next) {
+    res.render('index');
+});
 router.get('/login', function (req,res) {
     client.query("SELECT * FROM User where kakao_id='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
@@ -74,7 +77,7 @@ router.get('/create', function (req,res) {
     var a = req.session.user_id;
     client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', 0, now());" , function (err, result, fields) {
         if (err) {
-            res.send(err.stack);
+            res.send('false');
             console.log("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());");
             console.log("INSERT INTO UsersTeam values('"+a+"','"+random+"', 1)");
             console.log("쿼리문에 오류가 있습니다.");
@@ -86,7 +89,7 @@ router.get('/create', function (req,res) {
 
     client.query("INSERT INTO UsersTeam values('"+a+"','"+random+"',1);", function (err, result, fields) {
         if(err){
-            res.send(err.stack);
+            res.send('false');
         }
         else{
             res.send(random);
@@ -99,9 +102,9 @@ router.get('/create', function (req,res) {
 //team 참여
 router.get('/attend', function (req,res) {
 
-    client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"',0');", function (err, result,fields) {
+    client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"',0);", function (err, result,fields) {
         if (err) {
-            res.send(err.stack);
+            res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
         }
         else {
@@ -114,17 +117,47 @@ router.get('/attend', function (req,res) {
 });
 
 //과제 만들기
-router.get('/create/assign', function (req,res) {
+router.post('/create/assign', function (req,res) {
     //console.log(req.session.tm_code);
-    client.query("INSERT INTO Assignment(tm_code,as_name,as_content,as_dl) values('"+req.query.tmcode+"','"+req.query.asname+"','"+req.query.ascontent+"','"+req.query.asdl+"');", function (err, result, fields) {
+    var users = req.body.users;
+    console.log(req.body.tmcode);
+    var a_id;
+    client.query("INSERT INTO Assignment(tm_code,as_name,as_content,as_dl) values('"+req.body.tmcode+"','"+req.body.asname+"','"+req.body.ascontent+"','"+req.body.asdl+"');", function (err, result, fields) {
         if (err) {
-            res.send('false');
-            console.log("쿼리문에 오류가 있습니다.");
+            console.log(err.stack);
+            return;
         }
         else {
-            res.send('access');
         }
     });
+
+    client.query("select last_insert_id();", function (err, result, fields) {
+        if(err) {
+            console.log(err.stack);
+            return;
+
+        }
+        else{
+            a_id = result[0];
+            console.log(a_id);
+        }
+
+    });
+
+    for (var i = 0; i < users.length; i++) {
+        client.query("INSERT INTO UsersAss values('" + users[i] + "',0,0," +a_id +",'"+ req.body.tmcode + "');", function (err, result, fields) {
+            if (err) {
+                console.log(err.stack);
+                return;
+
+            }
+            else {
+                // res.send('access');
+            }
+        });
+    }
+
+    res.send('access');
 });
 
 //team list -> 메인페이지 team room 에 유저정보가 없음.
@@ -172,7 +205,7 @@ router.get('/get/team/assign', function (req,res) {
 router.get('/get/assign', function (req,res) {
     client.query("SELECT * FROM Assignment where as_num='" + req.query.as_num+ "';", function (err, result, fields) {
         if (err) {
-            res.send(err.stack);
+            res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
         } else {
             res.json(result);
@@ -184,7 +217,7 @@ router.get('/get/assign', function (req,res) {
 router.get('/get/assign/list', function (req,res) {
     client.query("SELECT * FROM Assignment where as_num='" + req.query.as_num+ "';", function (err, result, fields) {
         if (err) {
-            res.send(err.stack);
+            res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
         } else {
             res.json(result);
