@@ -44,8 +44,18 @@ router.get('/login', function (req,res) {
 
         }
         else {
+            if(result == null){
+                client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result2, fields) {
+                    if (err) {
+                        res.send('false');
+                    }
+                    else {
+                        res.send('access');
+                    }
+                });
+            }
             req.session.user_id = req.query.id;
-            req.session.name = 'a';
+            req.session.name = req.query.name;
             if(req.session.count)
                 req.session.count++;
             else
@@ -57,16 +67,7 @@ router.get('/login', function (req,res) {
 
 // 조인 값 들어옴
 router.get('/join', function (req,res) {
-    client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result, fields) {
-        if (err) {
-            res.send('false');
-            console.log("쿼리문에 오류가 있습니다.");
-            console.log("INSERT INTO user values('" + req.query.id+"' , '"+ req.query.name +"');");
-        }
-        else {
-            res.send('access');
-        }
-    });
+
 });
 
 //team 만들기
@@ -204,4 +205,31 @@ router.get('/done', function (req,res) {
         }
     });
 });
+
+
+router.get('/done/assign', function (req,res) {
+    client.query("SELECT * FROM Assignment where as_num='"+req.query.asnum+"';", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            client.query("UPDATE Userass SET late=1 where app_time >='"+result[3]+"';", function (err, result, fields) {
+                if (err) {
+                    res.send('false');
+                    console.log("쿼리문에 오류가 있습니다.");
+                } else {
+                }
+            });
+        }
+    });
+    client.query("UPDATE Userass SET accept=1 where as_num='"+req.query.asnum+"';", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.send('access');
+        }
+    });
+});
+
 module.exports = router;
