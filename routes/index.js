@@ -95,20 +95,20 @@ router.get('/create', function (req,res) {
         }
 
     })
-    //return code
-    //방장 정보 추가해주는 함수
+
 });
 
+//team 참여
 router.get('/attend', function (req,res) {
 
-    client.query("INSERT INTO UsersTeam values('"+a+"','"+random+"','"+0+"');", function (err, result,fields) {
+    client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"','"+0+"');", function (err, result,fields) {
         if (err) {
             res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
         }
         else {
             res.json(result);
-            res.send('access');
+            // res.send('access');
         }
     })
 
@@ -151,7 +151,7 @@ router.get('/get/team', function (req,res) {
             res.send('false');
             console.log("쿼리문에 오류가 있습니다.");
         } else {
-            res.send('access');
+            // res.send('access');
             res.json(result);
         }
     });
