@@ -77,8 +77,8 @@ router.get('/create', function (req,res) {
     var a = req.session.user_id;
     client.query("INSERT INTO Team values( '" +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', 0, now());" , function (err, result, fields) {
         if (err) {
-            res.send('false');
-            console.log("INSERT INTO Team values( ' " +random +"' , '"+ req.query.tname +"' , '"+req.query.sname+"', '"+0+"', now());");
+            // res.send('false');
+            console.log(err.stack);
             console.log("INSERT INTO UsersTeam values('"+a+"','"+random+"', 1)");
             console.log("쿼리문에 오류가 있습니다.");
         }
@@ -92,7 +92,10 @@ router.get('/create', function (req,res) {
             res.send('false');
         }
         else{
-            res.send(random);
+            jObj = {};
+            jObj.code = random;
+            j = JSON.stringify(jObj);
+            res.send(j);
         }
 
     })
@@ -105,11 +108,11 @@ router.get('/attend', function (req,res) {
     client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"',0);", function (err, result,fields) {
         if (err) {
             res.send('false');
-            console.log("쿼리문에 오류가 있습니다.");
+            console.log(err.stack);
         }
         else {
-            res.json(result);
-            // res.send('access');
+            // res.json(result);
+            res.send('access');
         }
     })
 
@@ -121,7 +124,7 @@ router.post('/create/assign', function (req,res) {
     //console.log(req.session.tm_code);
     var users = req.body.users;
     console.log(req.body.tmcode);
-    var a_id;
+    var a_id ;
     client.query("INSERT INTO Assignment(tm_code,as_name,as_content,as_dl) values('"+req.body.tmcode+"','"+req.body.asname+"','"+req.body.ascontent+"','"+req.body.asdl+"');", function (err, result, fields) {
         if (err) {
             console.log(err.stack);
@@ -138,24 +141,31 @@ router.post('/create/assign', function (req,res) {
 
         }
         else{
-            a_id = result[0];
-            console.log(a_id);
+
+            var jsonOb = JSON.parse(JSON.stringify(result[0]));
+            for(var objVarName in jsonOb) {
+                a_id = jsonOb[objVarName];
+                console.log(jsonOb[objVarName]);
+            }
+
+            for (var i = 0; i < users.length; i++) {
+                console.log(a_id);
+                client.query("INSERT INTO UsersAss values('" + users[i] + "',0,0," +a_id +",'"+ req.body.tmcode + "',null);", function (err, result, fields) {
+                    if (err) {
+                        console.log(err.stack);
+                        return;
+
+                    }
+                    else {
+                        // res.send('access');
+                    }
+                });
+            }
         }
 
     });
 
-    for (var i = 0; i < users.length; i++) {
-        client.query("INSERT INTO UsersAss values('" + users[i] + "',0,0," +a_id +",'"+ req.body.tmcode + "');", function (err, result, fields) {
-            if (err) {
-                console.log(err.stack);
-                return;
 
-            }
-            else {
-                // res.send('access');
-            }
-        });
-    }
 
     res.send('access');
 });
