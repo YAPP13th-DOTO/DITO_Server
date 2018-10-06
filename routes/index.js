@@ -40,7 +40,8 @@ router.get('/', function(req, res, next) {
 router.get('/login', function (req,res) {
     client.query("SELECT * FROM User where kakao_id='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
-            console.log("쿼리문에 오류가 있습니다.");
+            res.send(err.stack);
+
         }
         else {
             req.session.user_id = req.query.id;
