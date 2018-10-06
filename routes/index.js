@@ -6,7 +6,9 @@ var querystring = require('querystring');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
-    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:process.env.RDS_DB_NAME
+    // host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:process.env.RDS_DB_NAME
+    host : "localhost", port: 3306,  user:"root", password:"1234", database:"dito_db"
+
 });
 
 function makeid()
@@ -86,7 +88,15 @@ router.get('/create', function (req,res) {
 
 //과제 만들기
 router.get('/create/assign', function (req,res) {
-    res.send('crate assi');
+    client.query("INSERT INTO teamassignment values('" +1 +"' , '"+ 2 +"','"+ 0+"','"+0+"',"+1+");", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        }
+        else {
+            res.send('access');
+        }
+    });
 });
 
 //team list
