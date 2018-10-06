@@ -44,7 +44,7 @@ router.get('/login', function (req,res) {
 
         }
         else {
-            if(result == null){
+            if(result[0] == null){
                 client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result2, fields) {
                     if (err) {
                         res.send('false');
