@@ -6,9 +6,9 @@ var querystring = require('querystring');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
-    // host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:"ebdb"
-    host : "aaua1c543fs7sg.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
-    , port: 3306,  user:"masterjh", password:"yappdito", database:"ebdb"
+    host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:"ebdb", charset :"utf8"
+    // host : "aaua1c543fs7sg.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
+    // , port: 3306,  user:"masterjh", password:"yappdito", database:"ebdb" ,charset :"utf8"
 
 });
 
@@ -101,7 +101,7 @@ router.get('/create', function (req,res) {
 //team 참여
 router.get('/attend', function (req,res) {
 
-    client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"','"+0+"');", function (err, result,fields) {
+    client.query("INSERT INTO UsersTeam values('"+req.session.user_id+"','"+req.query.code+"',0');", function (err, result,fields) {
         if (err) {
             res.send(err.stack);
             console.log("쿼리문에 오류가 있습니다.");
@@ -174,12 +174,34 @@ router.get('/get/team/assign', function (req,res) {
 router.get('/get/assign', function (req,res) {
     client.query("SELECT * FROM Assignment where assignment_num='" + req.query.as_num+ "';", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            res.send(err.stack);
             console.log("쿼리문에 오류가 있습니다.");
         } else {
-            res.send('access');
+            res.json(result);
         }
     });
 });
 
+router.get('/get/assign/list', function (req,res) {
+    client.query("SELECT * FROM Assignment where assignment_num='" + req.query.as_num+ "';", function (err, result, fields) {
+        if (err) {
+            res.send(err.stack);
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+router.get('/done', function (req,res) {
+    client.query("UPDATE Team SET isdone=1 where tm_code='"+req.query.tmcode+"';", function (err, result, fields) {
+        if (err) {
+            res.send('false');
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.send('access');
+
+        }
+    });
+});
 module.exports = router;
