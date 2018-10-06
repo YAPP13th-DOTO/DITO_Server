@@ -7,7 +7,8 @@ var mysql = require("mysql");
 
 var client = mysql.createConnection({
     host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD
-    // host : "localhost", port: 3306,  user:"root", password:"1234", database:"dito_db"
+    // host : "aa11q9sjl4yh0a7.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
+    // , port: 3306,  user:"dito", password:"masterjh", database:"ebdb"
 
 });
 
@@ -25,14 +26,14 @@ function makeid()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    client.connect(function(err) {
-        if (err) {
-            res.send(process.env.RDS_HOSTNAME +","+ process.env.RDS_USERNAME +","+ process.env.RDS_PASSWORD +","+ process.env.RDS_DB_NAME);
-            console.error('Database connection failed: ' + err.stack);
-            return;
-        }
 
-        res.send('Connected to database.');
+    client.query("show databases;", function (err, result) {
+        if(err){
+            res.send("is not connect");
+        }
+        else{
+            res.send("connect");
+        }
     });
 });
 
