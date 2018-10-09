@@ -7,8 +7,8 @@ var mysql = require("mysql");
 
 var client = mysql.createConnection({
     // host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:"ebdb", charset :"utf8"
-    host : "aaua1c543fs7sg.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
-    , port: 3306,  user:"masterjh", password:"yappdito", database:"ebdb" ,charset :"utf8"
+    host : "yappinstance.cgpltqpw2l6i.ap-northeast-2.rds.amazonaws.com"
+    , port: 3306,  user:"masterjh", password:"yappdito", database:"ditodb" ,charset :"utf8"
 
 });
 
@@ -43,27 +43,31 @@ router.get('/test', function(req, res, next) {
 router.get('/login', function (req,res) {
     client.query("SELECT * FROM User where kakao_id='" + req.query.id+"';", function (err, result, fields) {
         if (err) {
-            res.send(err.stack);
+            console.log(err.stack);
 
         }
         else {
             if(result[0] == null){
                 client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result2, fields) {
                     if (err) {
-                        res.send('false');
+                        jObj = {};
+                        jObj.answer='false';
+                        res.send(JSON.stringify(jObj));
                     }
                     else {
-                        res.send('access');
+
                     }
                 });
             }
-            req.session.user_id = req.query.id;
-            req.session.name = req.query.name;
-            if(req.session.count)
-                req.session.count++;
-            else
-                req.session.count = 1;
-            res.send(result[0]);
+
+            jObj = {};
+            jObj.answer = 'success';
+            jObj.kakao_id=req.query.id;
+            jObj.user_name=req.query.name;
+            jObj.user_pic=req.query.val;
+
+            res.send(JSON.stringify(jObj) );
+
         }
     });
 });
@@ -89,7 +93,7 @@ router.get('/create', function (req,res) {
 
     client.query("INSERT INTO UsersTeam values('"+req.query.id+"','"+random+"',1);", function (err, result, fields) {
         if(err){
-            res.send('false');
+            res.send(JSON.stringify("false"));
         }
         else{
             jObj = {};
@@ -107,12 +111,17 @@ router.get('/attend', function (req,res) {
 
     client.query("INSERT INTO UsersTeam values('"+req.query.id+"','"+req.query.code+"',0);", function (err, result,fields) {
         if (err) {
-            res.send('false');
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
             console.log(err.stack);
+            console.log(result);
         }
         else {
             // res.json(result);
-            res.send('access');
+            jObj = {};
+            jObj.answer='access';
+            res.send(JSON.stringify(jObj));
         }
     })
 
@@ -128,7 +137,6 @@ router.post('/create/assign', function (req,res) {
     client.query("INSERT INTO Assignment(tm_code,as_name,as_content,as_dl) values('"+req.body.tmcode+"','"+req.body.asname+"','"+req.body.ascontent+"','"+req.body.asdl+"');", function (err, result, fields) {
         if (err) {
             console.log(err.stack);
-            return;
         }
         else {
         }
@@ -137,7 +145,6 @@ router.post('/create/assign', function (req,res) {
     client.query("select last_insert_id();", function (err, result, fields) {
         if(err) {
             console.log(err.stack);
-            return;
 
         }
         else{
@@ -153,7 +160,6 @@ router.post('/create/assign', function (req,res) {
                 client.query("INSERT INTO UsersAss values('" + users[i] + "',0,0," +a_id +",'"+ req.body.tmcode + "',null);", function (err, result, fields) {
                     if (err) {
                         console.log(err.stack);
-                        return;
 
                     }
                     else {
@@ -165,32 +171,85 @@ router.post('/create/assign', function (req,res) {
 
     });
 
-
-
-    res.send('access');
-});
+    jObj = {};
+    jObj.answer='access';
+    res.send(JSON.stringify(jObj));});
 
 //team list -> 메인페이지 team room 에 유저정보가 없음.
-router.get('/get', function (req,res) {
-    // console.log(req.session.count);
-    client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.query.id+ "';", function (err, result, fields) {
+
+function sqlfun (list, i, res) {
+
+    client.query("select user_name, user_pic from UsersTeam natural join User where tm_code='" + list[i].tm_code + "';", function (err, result, fields) {
         if (err) {
-            res.send('false');
-            // console.log(req.session.user_id);
+            var jObj = {};
+            jObj.answer = 'false';
+            // res.send(JSON.stringify(jObj));            // console.log(req.session.user_id);
+        }
+        else {
+            // console.log('2');
+            // console.log(JSON.stringify(result));
+            list[i].users = result;
+            // console.log(fields);
+            // console.log(list);
+            console.log(i);
+            console.log(list);
+            if(i == list.length -1)
+                res.json(list);
+
+        }
+
+    });
+
+
+}
+function first(req,callback) {
+    client.query("select * from UsersTeam u natural join Team t where u.kakao_id = '" + req.query.id + "';", function (err, result, fields) {
+        var jObj = {};
+        if (err) {
+            jObj.answer = 'false';
+            res.send(JSON.stringify(jObj));            // console.log(req.session.user_id);
         } else {
-            // console.log(req.session.user_id);
-            // res.send('access');
-            res.json(result);
+            var list = [];
+            // console.log(JSON.stringify(result));
+            j = JSON.parse(JSON.stringify(result));
+            for (var r in j) {
+                var Obj = {};
+                Obj.tm_code = j[r].tm_code;
+                Obj.tm_name = j[r].tm_name;
+                Obj.sub_name = j[r].sub_name;
+                Obj.isdone = j[r].isdone;
+                Obj.iscreater = j[r].iscreater;
+                Obj.date = j[r].date;
+                // console.log('1');
+                Obj.users = [];
+                // console.log(sqlfun(Obj.tm_code));
+                console.log(Obj);
+                list.push(Obj);
+            }
+            console.log(1);
+            callback(list);
         }
     });
+}
+router.get('/get', function (req,res) {
+    first(req, function(list){
+
+        for(var i in list) {
+             sqlfun( list, i, res);
+        }
+
+        });
+    console.log("a");
 });
+
 
 //선택한 팀 -> 팀 세부정보
 router.get('/get/team', function (req,res) {
     client.query("SELECT * FROM Team where tm_code='" + req.query.tmcode+ "';", function (err, result, fields) {
         if (err) {
-            res.send('false');
-            console.log("쿼리문에 오류가 있습니다.");
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));            console.log("쿼리문에 오류가 있습니다.");
         } else {
             // res.send('access');
             res.json(result);
@@ -200,9 +259,26 @@ router.get('/get/team', function (req,res) {
 
 //과제 목록
 router.get('/get/team/assign', function (req,res) {
-    client.query("SELECT * FROM Assignment where tm_code='" + req.query.tm_code+ "';", function (err, result, fields) {
+    client.query("SELECT * FROM Assignment where tm_code='" + req.query.tmcode+ "';", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+            res.json(result);
+
+        }
+    });
+});
+
+//팀 참여자 목록
+router.get('/get/team/list', function (req,res) {
+    client.query("SELECT * FROM UsersTeam where tm_code='" + req.query.tmcode+ "';", function (err, result, fields) {
+        if (err) {
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
             res.json(result);
@@ -215,7 +291,9 @@ router.get('/get/team/assign', function (req,res) {
 router.get('/get/assign', function (req,res) {
     client.query("SELECT * FROM Assignment where as_num='" + req.query.as_num+ "';", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
             res.json(result);
@@ -227,7 +305,9 @@ router.get('/get/assign', function (req,res) {
 router.get('/get/assign/list', function (req,res) {
     client.query("SELECT * FROM Assignment where as_num='" + req.query.as_num+ "';", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
             res.json(result);
@@ -238,11 +318,14 @@ router.get('/get/assign/list', function (req,res) {
 router.get('/done', function (req,res) {
     client.query("UPDATE Team SET isdone=1 where tm_code='"+req.query.tmcode+"';", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
-            res.send('access');
-
+            jObj = {};
+            jObj.answer='access';
+            res.send(JSON.stringify(jObj));
         }
     });
 });
@@ -251,12 +334,16 @@ router.get('/done', function (req,res) {
 router.get('/done/assign', function (req,res) {
     client.query("SELECT * FROM Assignment where as_num='"+req.query.asnum+"';", function (err, result, fields) {
         if (err) {
-            res.send('false');
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
             client.query("UPDATE Userass SET late=1 where app_time >='"+result[0].asdl+"';", function (err, result, fields) {
                 if (err) {
-                    res.send('false');
+                    jObj = {};
+                    jObj.answer='false';
+                    res.send(JSON.stringify(jObj));
                     console.log("쿼리문에 오류가 있습니다.");
                 } else {
                 }
@@ -265,10 +352,13 @@ router.get('/done/assign', function (req,res) {
     });
     client.query("UPDATE Userass SET accept=1 where as_num='"+req.query.asnum+"';", function (err, result, fields) {
         if (err) {
-            res.send('false');
-            console.log("쿼리문에 오류가 있습니다.");
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
         } else {
-            res.send('access');
+            jObj = {};
+            jObj.answer='access';
+            res.send(JSON.stringify(jObj));
         }
     });
 });
