@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var url = require('url');
 var querystring = require('querystring');
-
+var date = require('date-utils');
 var mysql = require("mysql");
 
 var client = mysql.createConnection({
@@ -108,22 +108,36 @@ router.get('/create', function (req,res) {
 
 //team 참여
 router.get('/attend', function (req,res) {
+client.query("select * from UsersTeam where kakao_id='"+req.query.id+"' and tm_code='"+req.query.code+"';", function (err, result,fields) {
+    if(err){
 
-    client.query("INSERT INTO UsersTeam values('"+req.query.id+"','"+req.query.code+"',0);", function (err, result,fields) {
-        if (err) {
-            jObj = {};
-            jObj.answer='false';
-            res.send(JSON.stringify(jObj));
-            console.log(err.stack);
-            console.log(result);
+    }
+    else {
+        console.log(1);
+        if(result.length ==0) {
+            client.query("INSERT INTO UsersTeam values('" + req.query.id + "','" + req.query.code + "',0);", function (err, result, fields) {
+                if (err) {
+                    jObj = {};
+                    jObj.answer = 'false';
+                    res.send(JSON.stringify(jObj));
+                    console.log(err.stack);
+                    console.log(result);
+                }
+                else {
+                    // res.json(result);
+                    jObj = {};
+                    jObj.answer = 'access';
+                    res.send(JSON.stringify(jObj));
+                }
+            });
         }
-        else {
-            // res.json(result);
+        else{
             jObj = {};
-            jObj.answer='access';
+            jObj.answer = 'already';
             res.send(JSON.stringify(jObj));
         }
-    })
+    }
+});
 
 
 });
@@ -137,6 +151,9 @@ router.post('/create/assign', function (req,res) {
     client.query("INSERT INTO Assignment(tm_code,as_name,as_content,as_dl) values('"+req.body.tmcode+"','"+req.body.asname+"','"+req.body.ascontent+"','"+req.body.asdl+"');", function (err, result, fields) {
         if (err) {
             console.log(err.stack);
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
         }
         else {
         }
@@ -163,7 +180,9 @@ router.post('/create/assign', function (req,res) {
 
                     }
                     else {
-                        // res.send('access');
+                        jObj = {};
+                        jObj.answer='access';
+                        res.send(JSON.stringify(jObj));
                     }
                 });
             }
@@ -171,9 +190,7 @@ router.post('/create/assign', function (req,res) {
 
     });
 
-    jObj = {};
-    jObj.answer='access';
-    res.send(JSON.stringify(jObj));});
+});
 
 //team list -> 메인페이지 team room 에 유저정보가 없음.
 
@@ -245,17 +262,44 @@ router.get('/get', function (req,res) {
 
 //선택한 팀 -> 팀 세부정보
 router.get('/get/team', function (req,res) {
-    client.query("SELECT * FROM Team where tm_code='" + req.query.tmcode+ "';", function (err, result, fields) {
+    client.query("SELECT * FROM Team natural join UsersTeam where tm_code='" + req.query.tmcode+ "' and kakao_id = '"+ req.query.id+"';", function (err, result, fields) {
         if (err) {
             jObj = {};
             jObj.answer='false';
             res.send(JSON.stringify(jObj));            console.log("쿼리문에 오류가 있습니다.");
         } else {
             // res.send('access');
-            res.json(result);
+            j = result[0];
+            var obj = {};
+            console.log(j);
+            obj.tm_code = j.tm_code;
+            obj.kakao_id = j.kakao_id;
+            obj.iscreater = j.iscreater;
+            obj.tm_name = j.tm_name;
+            obj.sub_name = j.sub_name;
+            obj.isdone = j.isdone;
+            obj.date = j.date;
+            console.log(j);
+
+            client.query("SELECT * FROM User natural join UsersTeam where tm_code='" + req.query.tmcode+"';", function (err, result, fields) {
+                if(err){
+                    jObj = {};
+                    jObj.answer='false';
+                    res.send(JSON.stringify(jObj));            console.log("쿼리문에 오류가 있습니다.");
+
+                }else {
+                    console.log(obj);
+                    obj.users = result;
+                    res.send(JSON.stringify(obj));
+                }
+
+
+            })
         }
     });
 });
+
+
 
 //과제 목록
 router.get('/get/team/assign', function (req,res) {
@@ -296,7 +340,43 @@ router.get('/get/assign', function (req,res) {
             res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
-            res.json(result);
+            j = result[0];
+
+            jObj = {};
+            jObj.tm_code = j.tm_code;
+            jObj.as_name = j.as_name;
+            jObj.as_content = j.as_content;
+            jObj.as_num = j.as_num;
+
+            var now = new Date();
+            var deadline = new Date(j.as_dl);
+            var n = now.getTime()/(24*60*60*1000);
+            var d = deadline.getTime()/86400000;
+
+            console.log(n);
+            console.log(d);
+
+            console.log(Math.floor(d-n));
+            console.log(now.getHours()+","+now.getMinutes()+","+now.getSeconds());
+            if(Math.floor(d-n) == 0){
+                var gap = Math.round((deadline.getTime()-now.getTime())/1000);
+                var D = Math.floor(gap / 86400);
+                var H = Math.floor((gap - D * 86400) / 3600 % 3600);
+                var M = Math.floor((gap - H * 3600) / 60 % 60);
+                var S = Math.floor((gap - M * 60) % 60);
+                jObj.dead=H+":"+M+":"+S;
+                  }
+            else if(Math.floor(d-n) < 0){
+                jObj.dead = -1;
+            }
+            else
+                jObj.dead =Math.floor(d-n);
+
+            console.log(jObj);
+            res.send(JSON.stringify(jObj));
+
+
+
         }
     });
 });
@@ -362,5 +442,35 @@ router.get('/done/assign', function (req,res) {
         }
     });
 });
+
+
+router.get('/get/user', function(req,res) {
+    client.query("SELECT * FROM User where kakao_id='" +req.query.id+"';", function (err,result, fields) {
+        if (err) {
+            jObj = {};
+            jObj.answer='error';
+            res.send(JSON.stringify(jObj)); // 잘못된 문자열입력했을때 아니면 걍 쿼리오류
+        }
+        else {
+            if(result[0] == null) {
+                jObj = {};
+                jObj.answer='false';
+                res.send(JSON.stringify(jObj)); // false
+            }
+            else {
+                r = JSON.parse(JSON.stringify(result[0]));
+                jObj = {};
+                jObj.answer = 'access';
+                jObj.kakao_id=r.kakao_id;
+                jObj.user_name=r.user_name;
+                jObj.user_pic=r.user_pic;
+
+                res.send(JSON.stringify(jObj) );
+            }
+        }
+    });
+});
+
+
 
 module.exports = router;
