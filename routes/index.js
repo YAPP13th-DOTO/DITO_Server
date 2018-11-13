@@ -371,7 +371,7 @@ router.get('/get/assign', function (req,res) {
             jObj.as_name = j.as_name;
             jObj.as_content = j.as_content;
             jObj.as_num = j.as_num;
-            jObj.deadl = j.as_dl;
+            jObj.as_dl = j.as_dl;
             jObj.answer = 'access';
             var now = new Date();
             var deadline = new Date(j.as_dl);
