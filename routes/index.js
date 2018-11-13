@@ -2,8 +2,12 @@ var express = require('express');
 var router = express.Router();
 var url = require('url');
 var querystring = require('querystring');
-var date = require('date-utils');
 var mysql = require("mysql");
+var FCM = require('fcm-push');
+var serverKey = 'AAAAHkGjBGY:APA91bH0__dFGbQjPxgXn2pegFmzfWuJL3nGS7PB9jJwHOqUKPgUnPjufDidTjQoWfEzLAsCGXp9nGGRdjKZct08lN3-VV705rBy-K0BwDVJIbftOB0SfLvMDjnRt5PtUm3U1dzkToBF';
+var fcm = new FCM(serverKey);
+
+require('date-utils');
 
 var client = mysql.createConnection({
     // host : process.env.RDS_HOSTNAME, port: process.env.RDS_PORT,  user:process.env.RDS_USERNAME, password:process.env.RDS_PASSWORD, database:"ebdb", charset :"utf8"
@@ -39,6 +43,17 @@ router.get('/', function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
     res.render('index');
+});
+router.get('/delete', function (req,res,next)
+{
+   client.query("delete from UsersAss; delete from Assignment; delete from UsersTeam; delete from Team; delete from User;",function (err, result) {
+       if(err){
+           res.send('false');
+       }else{
+           res.send('success');
+       }
+
+   })
 });
 router.get('/login', function (req,res) {
     client.query("SELECT * FROM User where kakao_id='" + req.query.id+"';", function (err, result, fields) {
@@ -196,7 +211,7 @@ router.post('/create/assign', function (req,res) {
 
 function sqlfun (list, i, res) {
 
-    client.query("select user_name, user_pic from UsersTeam natural join User where tm_code='" + list[i].tm_code + "';", function (err, result, fields) {
+    client.query("select * from UsersTeam natural join User where tm_code='" + list[i].tm_code + "';", function (err, result, fields) {
         if (err) {
             var jObj = {};
             jObj.answer = 'false';
@@ -469,6 +484,29 @@ router.get('/get/user', function(req,res) {
             }
         }
     });
+});
+
+router.get('/push/message',function (req,res) {
+   var message = {
+       to: req.query.token,
+       collapse_key: 'your_collapse_key',
+       data: {
+           your_custom_data_key: 'your_custom_data_value'
+       },
+       notification: {
+           title: '과제승인요청',
+           body: req.query.name+'님의 과제 승인 요청이 왔습니다.'
+       }
+   };
+    fcm.send(message, function(err, response){
+        if (err) {
+            console.log("Something has gone wrong!");
+        } else {
+            console.log("Successfully sent with response: ", response);
+        }
+    });
+
+    res.send("success");
 });
 
 
