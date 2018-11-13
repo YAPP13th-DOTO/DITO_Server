@@ -305,6 +305,7 @@ router.get('/get/team', function (req,res) {
                 }else {
                     console.log(obj);
                     obj.users = result;
+                    obj.answer = 'access';
                     res.send(JSON.stringify(obj));
                 }
 
@@ -325,7 +326,15 @@ router.get('/get/team/assign', function (req,res) {
             res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
-            res.json(result);
+            jObj = {};
+            jObj.answer='access';
+            j = result[0];
+            jObj.tm_code = j.tm_code;
+            jObj.as_content = j.as_content;
+            jObj.as_name = j.as_name;
+            jObj.as_num = j.as_num;
+            jObj.as_dl = j.as_dl;
+            res.send(JSON.stringify(jObj));
 
         }
     });
@@ -363,6 +372,7 @@ router.get('/get/assign', function (req,res) {
             jObj.as_content = j.as_content;
             jObj.as_num = j.as_num;
             jObj.deadl = j.as_dl;
+            jObj.answer = 'access';
             var now = new Date();
             var deadline = new Date(j.as_dl);
             var n = now.getTime()/(24*60*60*1000);
