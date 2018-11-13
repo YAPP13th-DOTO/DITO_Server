@@ -46,11 +46,48 @@ router.get('/test', function(req, res, next) {
 });
 router.get('/delete', function (req,res,next)
 {
-   client.query("delete from UsersAss; delete from Assignment; delete from UsersTeam; delete from Team; delete from User;",function (err, result) {
+   client.query("SET SQL_SAFE_UPDATES = 0; ",function (err, result) {
        if(err){
-           res.send('false');
+           console.log(err.stack)
        }else{
-           res.send('success');
+           client.query("delete from UsersAss;",function (err, result) {
+               if(err){
+
+               }
+               else{
+                   client.query("delete from Assignment;", function (err, result){
+                       if(err){
+
+                       }
+                       else{
+                           client.query("delete from UsersTeam;", function (err, result){
+                               if(err){
+
+                               }
+                               else{
+                                   client.query("delete from Team; ", function (err, result) {
+
+                                       if(err){
+
+                                       }
+                                       else{
+                                           client.query("delete from User;", function(err, result){
+                                               if(err){
+                                                   res.send("false");
+                                               }
+                                               else{
+                                                   res.send("success");
+                                               }
+                                           })
+                                       }
+                                   })
+                               }
+                           })
+                       }
+                   } )
+
+               }
+           })
        }
 
    })
@@ -157,10 +194,14 @@ client.query("select * from UsersTeam where kakao_id='"+req.query.id+"' and tm_c
 
 });
 
+function lastInsert(callback){
+
+}
 //과제 만들기
 router.post('/create/assign', function (req,res) {
     //console.log(req.session.tm_code);
     var users = req.body.users;
+    console.log(req.body.users+ req.body.users.length);
     console.log(req.body.tmcode);
     var a_id ;
     client.query("INSERT INTO Assignment(tm_code,as_name,as_content,as_dl) values('"+req.body.tmcode+"','"+req.body.asname+"','"+req.body.ascontent+"','"+req.body.asdl+"');", function (err, result, fields) {
@@ -171,39 +212,61 @@ router.post('/create/assign', function (req,res) {
             res.send(JSON.stringify(jObj));
         }
         else {
-        }
-    });
+            client.query("select last_insert_id();", function (err, result, fields) {
+                if(err) {
+                    console.log(err.stack);
 
-    client.query("select last_insert_id();", function (err, result, fields) {
-        if(err) {
-            console.log(err.stack);
-
-        }
-        else{
-
-            var jsonOb = JSON.parse(JSON.stringify(result[0]));
-            for(var objVarName in jsonOb) {
-                a_id = jsonOb[objVarName];
-                console.log(jsonOb[objVarName]);
-            }
-
-            for (var i = 0; i < users.length; i++) {
-                console.log(a_id);
-                client.query("INSERT INTO UsersAss values('" + users[i] + "',0,0," +a_id +",'"+ req.body.tmcode + "',null);", function (err, result, fields) {
-                    if (err) {
-                        console.log(err.stack);
+                }
+                else {
+                    var jsonOb = JSON.parse(JSON.stringify(result[0]));
+                    for (var objVarName in jsonOb) {
+                        a_id = jsonOb[objVarName];
+                        console.log(jsonOb[objVarName]);
+                        console.log(Object.keys(users).length);
 
                     }
+
+                    var lan =Object.keys(users).length;
+
+                    var string = "";
+                    if(!Array.isArray(users)) {
+
+                        string += "('" + users + "',0,0," + a_id + ",'" + req.body.tmcode + "',0)"
+                        console.log("isarray");
+                    }
+
                     else {
-                        jObj = {};
-                        jObj.answer='access';
-                        res.send(JSON.stringify(jObj));
-                    }
-                });
-            }
-        }
+                        for (var i = 0; i < lan; i++) {
 
+                            string += "('" + users[i] + "',0,0," + a_id + ",'" + req.body.tmcode + "',0)";
+                            if (i + 1 != lan)
+                                string += ",";
+                            console.log(users[i]);
+                        }
+                    }
+                    console.log(a_id);
+                    client.query("INSERT INTO UsersAss values"+string+";", function (err, result, fields) {
+                        if (err) {
+                            console.log(err.stack);
+
+                            jObj = {};
+                            jObj.answer = 'false';
+                            res.send(JSON.stringify(jObj));
+                            return false;
+
+                        }
+                        else {
+                                jObj = {};
+                                jObj.answer = 'access';
+                                res.send(JSON.stringify(jObj));
+                        }
+                    });
+                }
+            });
+        }
     });
+
+
 
 });
 
@@ -315,10 +378,7 @@ router.get('/get/team', function (req,res) {
     });
 });
 
-
-
-//과제 목록
-router.get('/get/team/assign', function (req,res) {
+function ass(req, callback){
     client.query("SELECT * FROM Assignment where tm_code='" + req.query.tmcode+ "';", function (err, result, fields) {
         if (err) {
             jObj = {};
@@ -326,16 +386,61 @@ router.get('/get/team/assign', function (req,res) {
             res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
-            jObj = {};
-            jObj.answer='access';
-            j = result[0];
-            jObj.tm_code = j.tm_code;
-            jObj.as_content = j.as_content;
-            jObj.as_name = j.as_name;
-            jObj.as_num = j.as_num;
-            jObj.as_dl = j.as_dl;
-            res.send(JSON.stringify(jObj));
+            Obj = {};
+            Obj.answer = 'access';
+            Obj.list = [];
+            for (i = 0; i < Object.keys(result).length; i++) {
+                jObj = {};
+                jObj.tm_code = result[i].tm_code;
+                jObj.as_content = result[i].as_content;
+                jObj.as_name = result[i].as_name;
+                jObj.as_num = result[i].as_num;
+                jObj.as_dl = result[i].as_dl;
+                Obj.list.push(jObj);
+            }
+            callback(Obj);
+        }
+    });
+}
 
+function as_user(Obj, i, res){
+
+    client.query("SELECT * FROM UsersAss natural join User where as_num=" + Obj.list[i].as_num+ ";", function (err, result, fields) {
+        if (err) {
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
+            console.log("쿼리문에 오류가 있습니다.");
+        } else {
+
+            /*Obj = {};
+            Obj.users = [];
+            Obj.answer = 'access';
+            for(i = 0; i < Object.keys(result).length; i++){
+                jObj = {};
+                jObj.kakao_id = result[i].kakao_id;
+                jObj.late = result[i].late;
+                jObj.accept = result[i].accept;
+                jObj.as_num = result[i].as_num;
+                jObj.team_code = result[i].team_code;
+                jObj.req = result[i].req;
+                jObj.user_name = result[i].user_name;
+                jObj.user_pic = result[i].user_pic;
+                console.log(jObj);
+                Obj.users.push(jObj);
+            }*/
+            Obj.list[i].users = result;
+            if(i == Obj.list.length -1)
+                res.send(JSON.stringify(Obj));
+        }
+    });
+}
+//과제 목록
+router.get('/get/team/assign', function (req,res) {
+
+    ass(req, function(Obj){
+        for(var i in Obj.list) {
+            as_user( Obj, i, res);
         }
     });
 });
@@ -407,18 +512,9 @@ router.get('/get/assign', function (req,res) {
 });
 
 //과제참여자
-router.get('/get/assign/list', function (req,res) {
-    client.query("SELECT * FROM Assignment where as_num='" + req.query.as_num+ "';", function (err, result, fields) {
-        if (err) {
-            jObj = {};
-            jObj.answer='false';
-            res.send(JSON.stringify(jObj));
-            console.log("쿼리문에 오류가 있습니다.");
-        } else {
-            res.json(result);
-        }
-    });
-});
+// router.get('/get/assign/list', function (req,res) {
+
+// });
 
 router.get('/done', function (req,res) {
     client.query("UPDATE Team SET isdone=1 where tm_code='"+req.query.tmcode+"';", function (err, result, fields) {
@@ -496,17 +592,14 @@ router.get('/get/user', function(req,res) {
     });
 });
 
-router.get('/push/message',function (req,res) {
+router.get('/push/req',function (req,res) {
    var message = {
        to: req.query.token,
-       collapse_key: 'your_collapse_key',
        data: {
-           your_custom_data_key: 'your_custom_data_value'
-       },
-       notification: {
            title: '과제승인요청',
-           body: req.query.name+'님의 과제 승인 요청이 왔습니다.'
+           content: req.query.name+'님의 과제 승인 요청이 왔습니다.'
        }
+
    };
     fcm.send(message, function(err, response){
         if (err) {
@@ -516,9 +609,49 @@ router.get('/push/message',function (req,res) {
         }
     });
 
-    res.send("success");
+    client.query("UPDATE UsersAss SET req=1 where kakao_id='"+req.query.id+"';", function (err, result, fields) {
+        if (err) {
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
+        } else {
+            jObj = {};
+            jObj.answer='access';
+            res.send(JSON.stringify(jObj));
+        }
+    });
+
 });
 
+router.get('/push/answer',function (req,res) {
+
+    var message = {
+        to: req.query.token,
+        data: {
+            title: '승인요청 확인',
+            content: '승인요청이 확인되었습니다.'
+        }
+    };
+    fcm.send(message, function(err, response){
+        if (err) {
+            console.log("Something has gone wrong!");
+        } else {
+            console.log("Successfully sent with response: ", response);
+        }
+    });
+
+    client.query("UPDATE UsersAss SET req=1 where kakao_id='"+req.query.id+"';", function (err, result, fields) {
+        if (err) {
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
+        } else {
+            jObj = {};
+            jObj.answer='access';
+            res.send(JSON.stringify(jObj));
+        }
+    });
+});
 
 
 module.exports = router;

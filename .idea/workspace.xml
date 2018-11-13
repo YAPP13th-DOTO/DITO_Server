@@ -15,17 +15,8 @@
       <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Connection.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/mysql/lib/Connection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9291">
-              <caret line="489" column="10" selection-start-line="489" selection-start-column="10" selection-end-line="489" selection-end-column="10" />
+            <state relative-caret-position="95">
+              <caret line="8" column="66" lean-forward="true" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -52,8 +43,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="382" lean-forward="true" selection-start-line="382" selection-end-line="382" />
+            <state relative-caret-position="-3008">
+              <caret line="425" column="41" lean-forward="true" selection-start-line="425" selection-start-column="41" selection-end-line="425" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -61,8 +52,8 @@
       <file leaf-file-name="package-lock.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/package-lock.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+            <state relative-caret-position="190">
+              <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -71,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/../yapp-dito/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -81,15 +72,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
               <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -105,9 +87,10 @@
       <find>post</find>
       <find>attend</find>
       <find>null</find>
-      <find>과제</find>
       <find>create/assign</find>
       <find>push</find>
+      <find>과제</find>
+      <find>assign</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,6 +115,7 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/../yapp-dito/views/index.jade" />
         <option value="$PROJECT_DIR$/../yapp-dito/routes/index.js" />
       </list>
     </option>
@@ -153,8 +137,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="842" />
-    <option name="y" value="75" />
+    <option name="x" value="942" />
+    <option name="y" value="23" />
     <option name="width" value="980" />
     <option name="height" value="810" />
   </component>
@@ -280,12 +264,12 @@
       <workItem from="1541859833846" duration="2564000" />
       <workItem from="1541939792056" duration="2225000" />
       <workItem from="1541948767971" duration="12737000" />
-      <workItem from="1542009780626" duration="5910000" />
+      <workItem from="1542009780626" duration="27812000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109572000" />
+    <option name="totallyTimeSpent" value="131474000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -301,21 +285,22 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="bottom" id="TODO" order="10" weight="0.32770744" />
+      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.4986577" weight="0.32630098" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50201344" side_tool="true" visible="true" weight="0.4149086" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5026846" side_tool="true" visible="true" weight="0.209564" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32630098" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4986577" weight="0.007032349" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49731544" visible="true" weight="0.209564" />
       <window_info id="npm" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" sideWeight="0.49798658" visible="true" weight="0.4149086" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49798658" weight="0.4149086" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="1" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.09731544" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.053691275" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="5" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -328,35 +313,34 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="5" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="bottom" id="Find" order="5" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info id="npm" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32630098" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.09328859" />
-      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.09731544" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32770744" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.4986577" visible="true" weight="0.23628692" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4986577" weight="0.007032349" />
       <window_info id="Image Layers" order="6" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.056751467" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.4986577" weight="0.32911393" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49798658" visible="true" weight="0.4149086" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50201344" side_tool="true" visible="true" weight="0.4149086" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5013423" side_tool="true" visible="true" weight="0.23628692" />
       <window_info id="Capture Tool" order="3" />
-      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info id="Favorites" order="4" side_tool="true" />
@@ -393,13 +377,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -636,44 +613,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.pug">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.jade">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.pug">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/package.json">
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/mysql/lib/Connection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+        <state relative-caret-position="475">
+          <caret line="322" column="31" lean-forward="true" selection-start-line="322" selection-start-column="31" selection-end-line="322" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -684,17 +633,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/mysql/lib/Connection.js">
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9291">
-          <caret line="489" column="10" selection-start-line="489" selection-start-column="10" selection-end-line="489" selection-end-column="10" />
+        <state relative-caret-position="285">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/mysql/lib/protocol/Protocol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="320" column="2" lean-forward="true" selection-start-line="320" selection-start-column="2" selection-end-line="320" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="66" lean-forward="true" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="382" lean-forward="true" selection-start-line="382" selection-end-line="382" />
+        <state relative-caret-position="-3008">
+          <caret line="425" column="41" lean-forward="true" selection-start-line="425" selection-start-column="41" selection-end-line="425" selection-end-column="41" />
         </state>
       </provider>
     </entry>
