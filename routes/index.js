@@ -362,7 +362,7 @@ router.get('/get/assign', function (req,res) {
             jObj.as_name = j.as_name;
             jObj.as_content = j.as_content;
             jObj.as_num = j.as_num;
-
+            jObj.deadl = j.as_dl;
             var now = new Date();
             var deadline = new Date(j.as_dl);
             var n = now.getTime()/(24*60*60*1000);
@@ -379,13 +379,13 @@ router.get('/get/assign', function (req,res) {
                 var H = Math.floor((gap - D * 86400) / 3600 % 3600);
                 var M = Math.floor((gap - H * 3600) / 60 % 60);
                 var S = Math.floor((gap - M * 60) % 60);
-                jObj.dead=H+":"+M+":"+S;
+                jObj.dday=H+":"+M+":"+S;
                   }
             else if(Math.floor(d-n) < 0){
-                jObj.dead = -1;
+                jObj.dday = -1;
             }
             else
-                jObj.dead =Math.floor(d-n);
+                jObj.dday =Math.floor(d-n);
 
             console.log(jObj);
             res.send(JSON.stringify(jObj));
