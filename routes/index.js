@@ -4,7 +4,7 @@ var url = require('url');
 var querystring = require('querystring');
 var mysql = require("mysql");
 var FCM = require('fcm-push');
-var serverKey = 'AAAAHkGjBGY:APA91bH0__dFGbQjPxgXn2pegFmzfWuJL3nGS7PB9jJwHOqUKPgUnPjufDidTjQoWfEzLAsCGXp9nGGRdjKZct08lN3-VV705rBy-K0BwDVJIbftOB0SfLvMDjnRt5PtUm3U1dzkToBF';
+var serverKey = 'AAAAiiSG0Oo:APA91bGqUrYk05QNsMc7bAnFPxnWIlFs9sFUcis9gQxusFmfQCb3Zi2Kc3B7xAfRSnUqTZmGBDEhLCPhINW9HQJPxnotMqPgVxTEeOp6p8bQmshksdaWcU9d2LYpJ1h72Qac2QDYkmyY';
 var fcm = new FCM(serverKey);
 
 require('date-utils');
@@ -100,7 +100,7 @@ router.get('/login', function (req,res) {
         }
         else {
             if(result[0] == null){
-                client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"');", function (err, result2, fields) {
+                client.query("INSERT INTO User values('" + req.query.id+"' , '"+ req.query.name +"' , '"+ req.query.val+"', 0);", function (err, result2, fields) {
                     if (err) {
                         jObj = {};
                         jObj.answer='false';
@@ -124,6 +124,22 @@ router.get('/login', function (req,res) {
     });
 });
 
+router.post('/token',function (req, res) {
+
+    client.query("UPDATE User set token='"+req.body.token+"' where kakao_id='"+req.body.id+"'; ", function (err, result, fields) {
+        if(err){
+            jObj = {};
+            jObj.answer = 'false';
+            res.send(JSON.stringify(jObj));
+        }
+        else {
+            jObj = {};
+            jObj.answer = 'access';
+            res.send(JSON.stringify(jObj));
+        }
+    })
+
+});
 
 
 //team 만들기
@@ -194,9 +210,7 @@ client.query("select * from UsersTeam where kakao_id='"+req.query.id+"' and tm_c
 
 });
 
-function lastInsert(callback){
 
-}
 //과제 만들기
 router.post('/create/assign', function (req,res) {
     //console.log(req.session.tm_code);
@@ -386,20 +400,26 @@ function ass(req, callback){
             res.send(JSON.stringify(jObj));
             console.log("쿼리문에 오류가 있습니다.");
         } else {
+            console.log(result);
             Obj = {};
             Obj.answer = 'access';
             Obj.list = [];
+            console.log(Object.keys(result).length);
             for (i = 0; i < Object.keys(result).length; i++) {
                 jObj = {};
                 jObj.tm_code = result[i].tm_code;
                 jObj.as_content = result[i].as_content;
                 jObj.as_name = result[i].as_name;
                 jObj.as_num = result[i].as_num;
-                jObj.as_dl = result[i].as_dl;
+                var deadline = new Date(result[i].as_dl);
+                jObj.as_dl = deadline.getFullYear()+"-"+(deadline.getMonth()+1)+"-"+deadline.getDate()+" "+deadline.getHours()+":"+deadline.getMinutes()+":"+deadline.getSeconds();
                 Obj.list.push(jObj);
             }
+            console.log(Obj);
             callback(Obj);
-        }
+
+
+       }
     });
 }
 
@@ -429,6 +449,7 @@ function as_user(Obj, i, res){
                 console.log(jObj);
                 Obj.users.push(jObj);
             }*/
+            console.log(Obj);
             Obj.list[i].users = result;
             if(i == Obj.list.length -1)
                 res.send(JSON.stringify(Obj));
@@ -438,11 +459,29 @@ function as_user(Obj, i, res){
 //과제 목록
 router.get('/get/team/assign', function (req,res) {
 
-    ass(req, function(Obj){
-        for(var i in Obj.list) {
-            as_user( Obj, i, res);
+    client.query("UPDATE UsersAss natural join Assignment set late =1 where UsersAss.req = 0 and Assignment.as_dl < now();", function (err, result, fields) {
+        if(err){
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
+            console.log("쿼리문에 오류가 있습니다.");
+        }
+        else{
+            console.log("안되?");
+            ass(req, function(Obj){
+                if(Obj.list.length != 0) {
+                    for (var i in Obj.list) {
+                        console.log("??");
+                        as_user(Obj, i, res);
+                    }
+                }
+                else
+                    res.send(JSON.stringify(Obj));
+            });
+
         }
     });
+
 });
 
 //팀 참여자 목록
@@ -476,12 +515,13 @@ router.get('/get/assign', function (req,res) {
             jObj.as_name = j.as_name;
             jObj.as_content = j.as_content;
             jObj.as_num = j.as_num;
-            jObj.as_dl = j.as_dl;
             jObj.answer = 'access';
             var now = new Date();
             var deadline = new Date(j.as_dl);
             var n = now.getTime()/(24*60*60*1000);
             var d = deadline.getTime()/86400000;
+            jObj.as_dl = deadline.getFullYear()+"-"+(deadline.getMonth()+1)+"-"+deadline.getDate()+" "+deadline.getHours()+":"+deadline.getMinutes()+":"+deadline.getSeconds();
+            console.log(jObj.as_dl);
 
             console.log(n);
             console.log(d);
@@ -593,21 +633,30 @@ router.get('/get/user', function(req,res) {
 });
 
 router.get('/push/req',function (req,res) {
-   var message = {
-       to: req.query.token,
-       data: {
-           title: '과제승인요청',
-           content: req.query.name+'님의 과제 승인 요청이 왔습니다.'
-       }
 
-   };
-    fcm.send(message, function(err, response){
-        if (err) {
-            console.log("Something has gone wrong!");
-        } else {
-            console.log("Successfully sent with response: ", response);
-        }
-    });
+   client.query("SELECT token FROM User where kakao_id='"+req.query.id+"';", function (err, result, fields) {
+       if (err) {
+           jObj = {};
+           jObj.answer='false';
+           res.send(JSON.stringify(jObj));
+       } else {
+           console.log(result[0].token);
+           var message = {
+               to: result[0].token,
+               data: {
+                   title: '과제승인요청',
+                   content: '과제 승인 요청이 왔습니다.'
+               }
+           };
+           fcm.send(message, function(err, response){
+               if (err) {
+                   console.log("Something has gone wrong!");
+               } else {
+                   console.log("Successfully sent with response: ", response);
+               }
+           });
+       }
+   });
 
     client.query("UPDATE UsersAss SET req=1 where kakao_id='"+req.query.id+"';", function (err, result, fields) {
         if (err) {
@@ -620,27 +669,37 @@ router.get('/push/req',function (req,res) {
             res.send(JSON.stringify(jObj));
         }
     });
+
 
 });
 
 router.get('/push/answer',function (req,res) {
 
-    var message = {
-        to: req.query.token,
-        data: {
-            title: '승인요청 확인',
-            content: '승인요청이 확인되었습니다.'
-        }
-    };
-    fcm.send(message, function(err, response){
+    client.query("SELECT token FROM User where kakao_id='"+req.query.id+"';", function (err, result, fields) {
         if (err) {
-            console.log("Something has gone wrong!");
+            jObj = {};
+            jObj.answer='false';
+            res.send(JSON.stringify(jObj));
         } else {
-            console.log("Successfully sent with response: ", response);
+            console.log(result[0].token);
+            var message = {
+                to: result[0].token,
+                data: {
+                    title: '승인요청 완료',
+                    content: '승인요청이 완료되었습니다.'
+                }
+            };
+            fcm.send(message, function(err, response){
+                if (err) {
+                    console.log("Something has gone wrong!");
+                } else {
+                    console.log("Successfully sent with response: ", response);
+                }
+            });
         }
     });
 
-    client.query("UPDATE UsersAss SET req=1 where kakao_id='"+req.query.id+"';", function (err, result, fields) {
+    client.query("UPDATE UsersAss SET accept = "+req.query.accept+" where kakao_id='"+req.query.id+"';", function (err, result, fields) {
         if (err) {
             jObj = {};
             jObj.answer='false';
@@ -651,6 +710,7 @@ router.get('/push/answer',function (req,res) {
             res.send(JSON.stringify(jObj));
         }
     });
+
 });
 
 
