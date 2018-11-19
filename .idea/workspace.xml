@@ -15,17 +15,8 @@
       <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+            <state relative-caret-position="190">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -43,8 +34,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="567" column="22" lean-forward="true" selection-start-line="567" selection-start-column="22" selection-end-line="567" selection-end-column="22" />
+            <state relative-caret-position="437">
+              <caret line="717" column="32" lean-forward="true" selection-start-line="717" selection-start-column="32" selection-end-line="717" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -52,8 +43,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="16" column="65" lean-forward="true" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+            <state relative-caret-position="304">
+              <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -102,8 +93,11 @@
       <find>post</find>
       <find />
       <find>create</find>
-      <find>과제</find>
       <find>update</find>
+      <find>과제</find>
+      <find>/push</find>
+      <find>/done</find>
+      <find>/팀</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,6 +127,8 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/../yapp-dito/routes/index.js" />
       </list>
     </option>
@@ -153,9 +149,10 @@
       <path value="$PROJECT_DIR$/../yapp-dito/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="979" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -164,8 +161,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -188,6 +183,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -283,12 +280,14 @@
       <workItem from="1542009780626" duration="27992000" />
       <workItem from="1542172344412" duration="714000" />
       <workItem from="1542288572092" duration="7310000" />
-      <workItem from="1542327132653" duration="2366000" />
+      <workItem from="1542327132653" duration="6284000" />
+      <workItem from="1542615279324" duration="272000" />
+      <workItem from="1542633304369" duration="770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142044000" />
+    <option name="totallyTimeSpent" value="147004000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -300,7 +299,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
@@ -308,16 +307,16 @@
       <window_info anchor="right" id="Palette&#9;" order="1" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.504698" side_tool="true" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.504698" side_tool="true" weight="0.0" />
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.4986577" weight="0.32630098" />
-      <window_info id="npm" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49463087" weight="0.209564" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49530202" visible="true" weight="0.0" />
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49530202" weight="0.32911393" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.15369128" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.02818792" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
@@ -335,10 +334,11 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32630098" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info id="npm" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32630098" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4986577" weight="0.007032349" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.09731544" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
@@ -346,7 +346,6 @@
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32770744" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4986577" weight="0.007032349" />
       <window_info id="Image Layers" order="6" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
@@ -667,6 +666,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.pug">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.jade">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -676,28 +688,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.pug">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.jade">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="16" column="65" lean-forward="true" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="567" column="22" lean-forward="true" selection-start-line="567" selection-start-column="22" selection-end-line="567" selection-end-column="22" />
+        <state relative-caret-position="437">
+          <caret line="717" column="32" lean-forward="true" selection-start-line="717" selection-start-column="32" selection-end-line="717" selection-end-column="32" />
         </state>
       </provider>
     </entry>

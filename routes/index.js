@@ -4,6 +4,7 @@ var url = require('url');
 var querystring = require('querystring');
 var mysql = require("mysql");
 var FCM = require('fcm-push');
+// 'AAAAiiSG0Oo:APA91bGqUrYk05QNsMc7bAnFPxnWIlFs9sFUcis9gQxusFmfQCb3Zi2Kc3B7xAfRSnUqTZmGBDEhLCPhINW9HQJPxnotMqPgVxTEeOp6p8bQmshksdaWcU9d2LYpJ1h72Qac2QDYkmyY'
 var serverKey = 'AAAAiiSG0Oo:APA91bGqUrYk05QNsMc7bAnFPxnWIlFs9sFUcis9gQxusFmfQCb3Zi2Kc3B7xAfRSnUqTZmGBDEhLCPhINW9HQJPxnotMqPgVxTEeOp6p8bQmshksdaWcU9d2LYpJ1h72Qac2QDYkmyY';
 var fcm = new FCM(serverKey);
 
@@ -105,7 +106,7 @@ router.get('/login', function (req, res) {
         else {
 
             if (result[0] == null) {
-                client.query("INSERT INTO User values('" + req.query.id + "' , '" + req.query.name + "' , '" + req.query.val + "');", function (err, result2, fields) {
+                client.query("INSERT INTO User values('" + req.query.id + "' , '" + req.query.name + "' , '" + req.query.val + "',0);", function (err, result2, fields) {
                     if (err) {
                         jObj = {};
                         jObj.answer = 'false';
@@ -697,7 +698,7 @@ router.get('/get/user', function (req, res) {
 
         router.get('/push/req',function (req,res) {
 
-            client.query("SELECT token FROM User where kakao_id='"+req.query.id+"';", function (err, result, fields) {
+            client.query("SELECT token FROM User where kakao_id='"+req.query.Aid+"';", function (err, result, fields) {
                 if (err) {
                     jObj = {};
                     jObj.answer='false';
@@ -707,8 +708,8 @@ router.get('/get/user', function (req, res) {
                     var message = {
                         to: result[0].token,
                         data: {
-                            title: '과제승인요청',
-                            content: '과제 승인 요청이 왔습니다.'
+                            title: 'Dito',
+                            content: req.query.name+'님의 과제 승인 요청이 왔습니다.'
                         }
                     };
                     fcm.send(message, function(err, response){
@@ -721,7 +722,7 @@ router.get('/get/user', function (req, res) {
                 }
             });
 
-            client.query("UPDATE UsersAss SET req=1 where kakao_id='"+req.query.id+"';", function (err, result, fields) {
+            client.query("UPDATE UsersAss SET req=1 where kakao_id='"+req.query.Bid+"' and as_num = "+req.query.as_num+";", function (err, result, fields) {
                 if (err) {
                     jObj = {};
                     jObj.answer='false';
@@ -745,11 +746,21 @@ router.get('/get/user', function (req, res) {
                     res.send(JSON.stringify(jObj));
                 } else {
                     console.log(result[0].token);
+                    var title = '';
+                    var content = '';
+                    if(req.query.accept == 1){
+                        title = 'Dito';
+                        content = '승인요청이 완료되었습니다.';
+                    }
+                    else{
+                        title = 'Dito';
+                        content = '승인요청이 거절되었습니다.';
+                    }
                     var message = {
                         to: result[0].token,
                         data: {
-                            title: '승인요청 완료',
-                            content: '승인요청이 완료되었습니다.'
+                            title: title,
+                            content: content
                         }
                     };
                     fcm.send(message, function(err, response){
@@ -762,17 +773,32 @@ router.get('/get/user', function (req, res) {
                 }
             });
 
-            client.query("UPDATE UsersAss SET accept = "+req.query.accept+" where kakao_id='"+req.query.id+"';", function (err, result, fields) {
-                if (err) {
-                    jObj = {};
-                    jObj.answer='false';
-                    res.send(JSON.stringify(jObj));
-                } else {
-                    jObj = {};
-                    jObj.answer='access';
-                    res.send(JSON.stringify(jObj));
-                }
-            });
+            if(req.query.accept == 1) {
+                client.query("UPDATE UsersAss SET accept = " + req.query.accept + " where kakao_id='" + req.query.id + "' and as_num = " + req.query.as_num + ";", function (err, result, fields) {
+                    if (err) {
+                        jObj = {};
+                        jObj.answer = 'false';
+                        res.send(JSON.stringify(jObj));
+                    } else {
+                        jObj = {};
+                        jObj.answer = 'access';
+                        res.send(JSON.stringify(jObj));
+                    }
+                });
+            }
+            else{
+                client.query("UPDATE UsersAss SET req = 0 where kakao_id='" + req.query.id + "' and as_num = " + req.query.as_num + ";", function (err, result, fields) {
+                    if (err) {
+                        jObj = {};
+                        jObj.answer = 'false';
+                        res.send(JSON.stringify(jObj));
+                    } else {
+                        jObj = {};
+                        jObj.answer = 'access';
+                        res.send(JSON.stringify(jObj));
+                    }
+                });
+            }
 
         });
 
