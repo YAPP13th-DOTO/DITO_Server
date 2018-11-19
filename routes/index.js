@@ -18,7 +18,6 @@ var client = mysql.createConnection({
     password: "yappdito",
     database: "ditodb",
     charset: "utf8"
-   //host: "127.0.0.1", port:3306, user:"root", password:"wlghd", database:"yapp", charset: "utf8"
 });
 
 function makeid() {
@@ -612,75 +611,20 @@ router.get('/done/assign', function (req, res) {
     });
 });
 
-//테스트 통계 함수
-function indiv(list, req, i, res) {
 
-    console.log('here7');
-    client.query("SELECT a.accept, a.late, b.as_name From UsersAss a RIGHT OUTER JOIN Assignment b ON a.team_code = b.tm_code where a.team_code='" + req.query.tmcode + "' and a.kakao_id='"+list[i].kakao_id+"'group by a.as_num;" ,function (err, result, fields) {
-    console.log('here8');
-    if (err) {
-        var jObj = {};
-        jObj.answer = 'false';
-    }
-    else {
-        console.log('here9');
-        list[i].as_name = result;
-        console.log(i);
-        console.log(list);
-        if (i == list.length - 1)
-            res.json(list);
-    }
-
-});
-
-
-}
-
-function chart(req, callback) {
-    client.query("SELECT kakao_id, COUNT(*) as total, SUM(accept) as accept, SUM(late) as late, COUNT(*)-SUM(accept) as nonaccept, SUM(accept)/COUNT(*) as percent FROM UsersAss where team_code='" + req.query.tmcode + "' GROUP BY kakao_id;", function (err, result, fields) {
-        var jObj = {};
-        if (err) {
-            jObj.answer = 'false';
-            res.send(JSON.stringify(jObj));            // console.log(req.session.user_id);
-        } else {
-            var list = [];
-            console.log('here4');
-            console.log(JSON.stringify(result));
-            j = JSON.parse(JSON.stringify(result));
-            for (var r in j) {
-                console.log('here5');
-                var obj = {};
-                obj.kakao_id = j[r].kakao_id;
-                obj.total = j[r].total;
-                obj.accept = j[r].accept;
-                obj.late = j[r].late;
-                obj.nonaccept = j[r].nonaccept;
-                obj.percent = j[r].percent;
-                obj.as_name = [];
-                console.log(obj);
-                list.push(obj);
-                console.log('here6');
-            }
-            //console.log(1);
-            callback(list);
-        }
-    });
-}
-
-
-
-//테스트 페이지
 router.get('/done/result/test', function (req, res) {
 
-   chart(req, function (list) {
-        console.log('here1');
-        for (var i in list) {
-            console.log('here2');
-            indiv(list, req, i, res);
+    client.query("SELECT UsersAss.kakao_id, UsersAss.accept, UsersAss.late, Assignment.as_name From UsersAss natural JOIN Assignment where UsersAss.team_code='" + req.query.tmcode + "' order by kakao_id; ", function (err, result, fields) {
+        if (err) {
+            console.log("쿼리문에 오류가 있습니다.2");
+
+        } else {
+            console.log('access');
+            res.send(result);
         }
 
-    });
-    console.log("here3");
+
+    })
 
 });
 
@@ -704,8 +648,8 @@ router.get('/done/result', function (req, res) {
             obj.nonaccept = j.nonaccept;
             obj.percent = j.percent;
             console.log(j);
-            res.send(JSON.stringify(obj));
-/*           client.query("SELECT UsersAss.kakao_id, UsersAss.accept, UsersAss.late, Assignment.as_name From UsersAss natural JOIN Assignment where UsersAss.team_code='" + req.query.tmcode + "' order by kakao_id;", function (err, result, fields) {
+
+           client.query("SELECT UsersAss.kakao_id, UsersAss.accept, UsersAss.late, Assignment.as_name From UsersAss natural JOIN Assignment where UsersAss.team_code='" + req.query.tmcode + "' order by kakao_id;", function (err, result, fields) {
                 if (err) {
                     jObj = {};
                     jObj.answer = 'false';
@@ -716,8 +660,10 @@ router.get('/done/result', function (req, res) {
                     console.log(obj);
                     obj.users = result;
                     res.send(JSON.stringify(obj));
-                }   // function으로 변경 후 객체마다 as_name 할당
-            })*/
+                }
+
+
+            })
         }
     });
 });
