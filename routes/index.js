@@ -611,63 +611,75 @@ router.get('/done/assign', function (req, res) {
     });
 });
 
+//통계 함수
+function indiv(list, req, i, res) {
 
-router.get('/done/result/test', function (req, res) {
-
-    client.query("SELECT UsersAss.kakao_id, UsersAss.accept, UsersAss.late, Assignment.as_name From UsersAss natural JOIN Assignment where UsersAss.team_code='" + req.query.tmcode + "' order by kakao_id; ", function (err, result, fields) {
+    client.query("SELECT a.accept, a.late, b.as_name From UsersAss a NATURAL JOIN Assignment b where a.team_code='" + req.query.tmcode + "' and a.kakao_id='"+list[i].kakao_id+"';" ,function (err, result, fields) {
         if (err) {
-            console.log("쿼리문에 오류가 있습니다.2");
-
-        } else {
-            console.log('access');
-            res.send(result);
+            var jObj = {};
+            jObj.answer = 'false';
+        }
+        else {
+            //console.log('here9');
+            list[i].as_name = result;
+            //console.log(i);
+            // console.log(list);
+            if (i == list.length - 1)
+                res.json(list);
         }
 
+    });
 
-    })
 
-});
+}
 
-// 통계페이지
-router.get('/done/result', function (req, res) {
+function chart(req, callback) {
     client.query("SELECT kakao_id, COUNT(*) as total, SUM(accept) as accept, SUM(late) as late, COUNT(*)-SUM(accept) as nonaccept, SUM(accept)/COUNT(*) as percent FROM UsersAss where team_code='" + req.query.tmcode + "' GROUP BY kakao_id;", function (err, result, fields) {
+        var jObj = {};
         if (err) {
-            jObj = {};
             jObj.answer = 'false';
-            res.send(JSON.stringify(jObj));
-            console.log("쿼리문에 오류가 있습니다.1");
+            res.send(JSON.stringify(jObj));            // console.log(req.session.user_id);
         } else {
-            // res.send('access');
-            j = result[0];
-            var obj = {};
-            console.log(j);
-            obj.kakao_id = j.kakao_id;
-            obj.total = j.total;
-            obj.accept = j.accept;
-            obj.late = j.late;
-            obj.nonaccept = j.nonaccept;
-            obj.percent = j.percent;
-            console.log(j);
-
-           client.query("SELECT UsersAss.kakao_id, UsersAss.accept, UsersAss.late, Assignment.as_name From UsersAss natural JOIN Assignment where UsersAss.team_code='" + req.query.tmcode + "' order by kakao_id;", function (err, result, fields) {
-                if (err) {
-                    jObj = {};
-                    jObj.answer = 'false';
-                    res.send(JSON.stringify(jObj));
-                    console.log("쿼리문에 오류가 있습니다.2");
-
-                } else {
-                    console.log(obj);
-                    obj.users = result;
-                    res.send(JSON.stringify(obj));
-                }
-
-
-            })
+            var list = [];
+            //console.log('here4');
+            console.log(JSON.stringify(result));
+            j = JSON.parse(JSON.stringify(result));
+            for (var r in j) {
+                //console.log('here5');
+                var obj = {};
+                obj.kakao_id = j[r].kakao_id;
+                obj.total = j[r].total;
+                obj.accept = j[r].accept;
+                obj.late = j[r].late;
+                obj.nonaccept = j[r].nonaccept;
+                obj.percent = j[r].percent;
+                obj.as_name = [];
+                //console.log(obj);
+                list.push(obj);
+                //console.log('here6');
+            }
+            //console.log(1);
+            callback(list);
         }
     });
-});
+}
 
+
+
+//통계페이지
+router.get('/done/result', function (req, res) {
+
+    chart(req, function (list) {
+        //console.log('here1');
+        for (var i in list) {
+            //console.log('here2');
+            indiv(list, req, i, res);
+        }
+
+    });
+    //console.log("here3");
+
+});
 
 router.get('/get/user', function (req, res) {
     client.query("SELECT * FROM User where kakao_id='" + req.query.id + "';", function (err, result, fields) {

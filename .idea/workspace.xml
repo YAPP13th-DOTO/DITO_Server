@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34b7ef43-e943-4192-a13e-b9f23d5bde05" name="Default Changelist" comment="make result page&#10;&#10;Edit index.js,&#10;-/done/result,&#10;-/done/result/test&#10;have to make function for as_name">
-      <change afterPath="$PROJECT_DIR$/DITO_Server.iml" afterDir="false" />
+    <list default="true" id="0909de88-3a31-48ac-8b63-8aae1bff3876" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
     </list>
@@ -15,15 +15,10 @@
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="2000466268">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
-          <entry key="git.branch.checkout.remote" value="3" />
+          <entry key="git.branch.checkout.local" value="1" />
+          <entry key="git.branch.delete.local" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -38,25 +33,17 @@
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
+      <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="js" value="689" />
-          <entry key="txt" value="160" />
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JavaScript" value="689" />
-          <entry key="PLAIN_TEXT" value="160" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.spring.boot.run.usages" />
-      <usages-collector id="statistics.spring.boot.mvc.usages" />
-      <usages-collector id="statistics.js.language.service.starts" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor" />
@@ -65,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="205">
+              <caret line="612" lean-forward="true" selection-start-line="612" selection-end-line="612" />
             </state>
           </provider>
         </entry>
@@ -74,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="79" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="1596">
+              <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -84,20 +71,60 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>router\.get\(\'\/done\/result\/test\'\, function \(req\, res\) \{\n\n            client\.query\(\&quot;SELECT usersass\.kakao_id\, usersass\.accept\, usersass\.late\, assignment\.as_name From usersass JOIN assignment  on usersass\.as_num\=assignment\.as_num  where usersass\.team_code\=\'\&quot;\+ req\.query\.tmcode\+ \&quot;\' order by kakao_id\;\&quot;\, function \(err\, result\, fields\) \{\n                if\(err\)\{\n                    jObj \= \{\}\;\n                    jObj\.answer\=\'false\'\;\n                    res\.send\(JSON\.stringify\(jObj\)\)\;            console\.log\(\&quot;쿼리문에 오류가 있습니다\.2\&quot;\)\;\n\n                \}else \{\n                    console\.log\(obj\)\;\n                    obj\.users \= result\;\n                    obj\.answer \= \'access\'\;\n                    res\.send\(JSON\.stringify\(obj\)\)\;\n                \}\n\n\n            \}\)\n\n\}\)\;\n</find>
+      <find>session</find>
+      <find>get</find>
+      <find>참여자</find>
+      <find>team</find>
+      <find>attend</find>
+      <find>null</find>
+      <find>create/assign</find>
+      <find>push</find>
+      <find>assign</find>
+      <find>as_dl</find>
+      <find>post</find>
+      <find />
+      <find>create</find>
+      <find>update</find>
+      <find>과제</find>
+      <find>/push</find>
+      <find>/done</find>
+      <find>/팀</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="jihye" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/.ebextensions/nodecommand.config" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/../yapp-dito/routes/index.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
@@ -108,24 +135,20 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/node_modules" />
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/package.json" />
-    </packageJsonPaths>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-5" />
-    <option name="width" value="1707" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="23" />
+    <option name="y" value="5" />
+    <option name="width" value="1522" />
     <option name="height" value="1160" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,17 +165,21 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/yapp-dito/views/layout.jade&#10;data&#9;ACTION&#9;DatabaseView.AddDataSourceHere" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542305156038" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.11.3" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/www" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.3487298" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -167,11 +194,25 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
-      <method v="2" />
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
-      <method v="2" />
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -179,17 +220,35 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="34b7ef43-e943-4192-a13e-b9f23d5bde05" name="Default Changelist" comment="" />
-      <created>1542300828617</created>
+      <changelist id="0909de88-3a31-48ac-8b63-8aae1bff3876" name="Default" comment="" />
+      <created>1538563745486</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1542300828617</updated>
-      <workItem from="1542300832053" duration="4319000" />
+      <updated>1538563745486</updated>
+      <workItem from="1538563765950" duration="14882000" />
+      <workItem from="1538752089543" duration="3889000" />
+      <workItem from="1538813635787" duration="37987000" />
+      <workItem from="1538970570250" duration="2001000" />
+      <workItem from="1538982166353" duration="14186000" />
+      <workItem from="1539068218867" duration="10092000" />
+      <workItem from="1539140415751" duration="1223000" />
+      <workItem from="1539747190828" duration="161000" />
+      <workItem from="1541833658041" duration="1715000" />
+      <workItem from="1541859833846" duration="2564000" />
+      <workItem from="1541939792056" duration="2225000" />
+      <workItem from="1541948767971" duration="12737000" />
+      <workItem from="1542009780626" duration="27992000" />
+      <workItem from="1542172344412" duration="714000" />
+      <workItem from="1542288572092" duration="7310000" />
+      <workItem from="1542327132653" duration="6284000" />
+      <workItem from="1542615279324" duration="272000" />
+      <workItem from="1542633304369" duration="770000" />
+      <workItem from="1542706973699" duration="798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4319000" />
+    <option name="totallyTimeSpent" value="148095000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -201,72 +260,186 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="399" y="15" width="1522" height="1160" extended-state="0" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23667377" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32917467" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3243762" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3294347" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info id="Designer" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.14774282" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49530202" weight="0.32911393" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.502052" side_tool="true" visible="true" weight="0.32553607" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="3" sideWeight="0.49794802" visible="true" weight="0.32553607" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49463087" weight="0.209564" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49932885" weight="0.05625879" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" sideWeight="0.49798658" weight="0.32630098" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info id="Designer" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.09731544" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49798658" visible="true" weight="0.4149086" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50201344" side_tool="true" visible="true" weight="0.4149086" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32630098" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.4986577" weight="0.007032349" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.056751467" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.32770744" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.config" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.pug" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.pug" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/.elasticbeanstalk/config.yml" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/.ebextensions/nodecommand.config" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/express/lib/router/index.js" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/mysql/lib/protocol/Parser.js" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/mysql/lib/Connection.js" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/package.json" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/package-lock.json" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/node_modules/mysql/lib/protocol/Protocol.js" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/app.js" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/users.js" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.pug" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/error.jade" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/.idea/workspace.xml" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.jade" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.jade" />
+    <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="1596">
+          <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="205">
+          <caret line="612" lean-forward="true" selection-start-line="612" selection-end-line="612" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ProjectJDKs.UI">
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3487298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3487298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>bootstrap</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3487298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3487298" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>yapp-dito</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.3487298" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.3487298" />
               </list>
             </option>
           </splitter-proportions>
