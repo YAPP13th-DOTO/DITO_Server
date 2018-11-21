@@ -631,7 +631,7 @@ function indiv(list, req, i, res) {
 }
 
 function chart(req, callback) {
-    client.query("SELECT kakao_id, COUNT(*) as total, SUM(accept)-SUM(late) as accept, SUM(late) as late, COUNT(*)-SUM(accept) as nonaccept, SUM(accept)/COUNT(*) as percent FROM UsersAss where team_code='" + req.query.tmcode + "' GROUP BY kakao_id;", function (err, result, fields) {
+    client.query("SELECT kakao_id, COUNT(*) as total, SUM(accept)-SUM(late) as accept, SUM(late) as late, COUNT(*)-SUM(accept) as nonaccept, SUM(accept)/COUNT(*) as percent, user_name, user_pic FROM UsersAss natural join User where team_code='" + req.query.tmcode + "' GROUP BY kakao_id;", function (err, result, fields) {
         var jObj = {};
         if (err) {
             jObj.answer = 'false';
@@ -651,6 +651,8 @@ function chart(req, callback) {
                 obj.nonaccept = j[r].nonaccept;
                 obj.percent = j[r].percent;
                 obj.as_name = [];
+                obj.user_name= j[r].user_name;
+                obj.user_pic = j[r].user_pic;
                 //console.log(obj);
                 list.push(obj);
                 //console.log('here6');
