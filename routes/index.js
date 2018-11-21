@@ -628,37 +628,6 @@ function indiv(list, req, i, res) {
         }
     });
 }
-
-function chart(req, callback) {
-    client.query("SELECT kakao_id, COUNT(*) as total, SUM(accept)-SUM(late) as accept, SUM(late) as late, COUNT(*)-SUM(accept) as nonaccept, ROUND(SUM(accept)*100/COUNT(*)) as percent, user_name, user_pic FROM UsersAss natural join User where team_code='" + req.query.tmcode + "' GROUP BY kakao_id;", function (err, result, fields) {
-        if (err) {
-            jObj.answer = 'false';
-            res.send(JSON.stringify(jObj));            // console.log(req.session.user_id);
-        } else {
-            var list = [];
-            //console.log(JSON.stringify(result));
-            j = JSON.parse(JSON.stringify(result));
-            console.log('here3');
-            for (var r in j) {
-                console.log('here4');
-                var obj = {};
-                obj.kakao_id = j[r].kakao_id;
-                obj.total = j[r].total;
-                obj.accept = j[r].accept;
-                obj.late = j[r].late;
-                obj.nonaccept = j[r].nonaccept;
-                obj.percent = j[r].percent;
-                obj.as_name = [];
-                obj.user_name= j[r].user_name;
-                obj.user_pic = j[r].user_pic;
-                list.push(obj);
-            }
-            console.log('here7');
-            callback(list);
-        }
-    });
-}
-
 function testchart(req, callback) {
     client.query("SELECT kakao_id, user_name, user_pic from User natural JOIN UsersTeam where tm_code='" + req.query.tmcode + "' order by iscreater desc;", function (err, result, fields) {
         if (err) {
@@ -694,24 +663,14 @@ function percent(req, kakao_id, list, r){
 }
 //통계페이지
 router.get('/done/result', function (req, res) {
-
-    chart(req, function (list) {
-        for (var i in list) {
-            indiv(list, req, i, res);
-        }
-
-    });
-
-});
-//result test url
-router.get('/done/result/test', function (req, res) {
     testchart(req, function (list) {
         for (var i in list) {
             indiv(list, req, i, res);
         }
-    });
-});
 
+    });
+
+});
 
 router.get('/get/user', function (req, res) {
     client.query("SELECT * FROM User where kakao_id='" + req.query.id + "';", function (err, result, fields) {
