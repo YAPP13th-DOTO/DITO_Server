@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0909de88-3a31-48ac-8b63-8aae1bff3876" name="Default" comment="통계 +추가&#10;&#10;function indiv, chart&#10;/done/result&#10;+ /done/finish">
+    <list default="true" id="0909de88-3a31-48ac-8b63-8aae1bff3876" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
     </list>
@@ -34,35 +35,25 @@
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="js" value="71" />
-          <entry key="txt" value="111" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JavaScript" value="71" />
-          <entry key="PLAIN_TEXT" value="111" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="646" column="45" lean-forward="true" selection-start-line="646" selection-start-column="45" selection-end-line="646" selection-end-column="45" />
+            <state relative-caret-position="205">
+              <caret line="612" lean-forward="true" selection-start-line="612" selection-end-line="612" />
             </state>
           </provider>
         </entry>
@@ -113,27 +104,27 @@
       <list>
         <option value="$PROJECT_DIR$/.ebextensions/nodecommand.config" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/../yapp-dito/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
@@ -145,8 +136,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="width" value="1746" />
+    <option name="x" value="23" />
+    <option name="y" value="5" />
+    <option name="width" value="1522" />
     <option name="height" value="1160" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -155,8 +147,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -251,31 +243,12 @@
       <workItem from="1542327132653" duration="6284000" />
       <workItem from="1542615279324" duration="272000" />
       <workItem from="1542633304369" duration="770000" />
-      <workItem from="1542706973699" duration="3109000" />
-      <workItem from="1542711971560" duration="241000" />
-      <workItem from="1542721253918" duration="300000" />
-      <workItem from="1542782667735" duration="2053000" />
-      <workItem from="1542802430111" duration="580000" />
+      <workItem from="1542706973699" duration="798000" />
     </task>
-    <task id="LOCAL-00001" summary="통계&#10;&#10;function indiv, chart&#10;/done/result">
-      <created>1542708017985</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1542708017985</updated>
-    </task>
-    <task id="LOCAL-00002" summary="통계 +추가&#10;&#10;function indiv, chart&#10;/done/result&#10;+ /done/finish">
-      <created>1542710725272</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1542710725272</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153580000" />
+    <option name="totallyTimeSpent" value="148095000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -287,24 +260,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1746" height="1160" extended-state="0" />
-    <editor active="true" />
+    <frame x="399" y="15" width="1522" height="1160" extended-state="0" />
     <layout>
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.13582444" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.14774282" />
       <window_info id="Image Layers" order="6" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49530202" weight="0.32911393" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5083037" side_tool="true" visible="true" weight="0.21247563" />
-      <window_info anchor="bottom" id="Version Control" order="3" sideWeight="0.49733475" weight="0.32053742" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.502052" side_tool="true" visible="true" weight="0.32553607" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="3" sideWeight="0.49794802" visible="true" weight="0.32553607" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49169633" visible="true" weight="0.21247563" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49463087" weight="0.209564" />
       <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49932885" weight="0.05625879" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -361,11 +333,6 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="통계&#10;&#10;function indiv, chart&#10;/done/result" />
-    <MESSAGE value="통계 +추가&#10;&#10;function indiv, chart&#10;/done/result&#10;+ /done/finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="통계 +추가&#10;&#10;function indiv, chart&#10;/done/result&#10;+ /done/finish" />
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../yapp-dito/.gitignore" />
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.pug" />
@@ -386,6 +353,9 @@
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/layout.jade" />
     <entry file="file://$PROJECT_DIR$/../yapp-dito/views/index.jade" />
     <entry file="file://$PROJECT_DIR$/../yapp-dito/routes/index.js" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mysql/lib/protocol/Parser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1596">
@@ -393,13 +363,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="646" column="45" lean-forward="true" selection-start-line="646" selection-start-column="45" selection-end-line="646" selection-end-column="45" />
+        <state relative-caret-position="205">
+          <caret line="612" lean-forward="true" selection-start-line="612" selection-end-line="612" />
         </state>
       </provider>
     </entry>
